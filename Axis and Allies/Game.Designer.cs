@@ -28,19 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.phaseLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // phaseLabel
+            // 
+            this.phaseLabel.AutoSize = true;
+            this.phaseLabel.Location = new System.Drawing.Point(25, 325);
+            this.phaseLabel.Name = "phaseLabel";
+            this.phaseLabel.Size = new System.Drawing.Size(35, 13);
+            this.phaseLabel.TabIndex = 0;
+            this.phaseLabel.Text = "label1";
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.phaseLabel);
             this.Name = "Game";
             this.Size = new System.Drawing.Size(500, 500);
             this.Load += new System.EventHandler(this.Game_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Game_Paint);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label phaseLabel;
     }
 }

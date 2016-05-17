@@ -28,7 +28,7 @@ namespace Axis_and_Allies
 
                     break;
 
-                case "artillerye":
+                case "artilleye":
 
                     attack = 2;
                     defense = 2;
@@ -56,34 +56,6 @@ namespace Axis_and_Allies
 
             owner = owner_;
             province = "null";
-        }
-
-        bool attackRoll(Unit a)
-        {
-            Random roll = new Random();
-
-            if (a.attack >= roll.Next(1, 7))
-            {
-                return true;
-            }
-            else 
-            {
-                return false;
-            }
-        }
-
-        bool defenseRoll(Unit a)
-        {
-            Random roll = new Random();
-
-            if (a.defense >= roll.Next(1, 7))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         void unitMove(Unit a, Province d, Province b)
