@@ -14,6 +14,7 @@ namespace Axis_and_Allies
     {
 
         #region Variables
+        //Ints
         int income;
         string nation;
 
@@ -89,19 +90,19 @@ namespace Axis_and_Allies
 
             switch (nation)
             {
-                case 1:
+                case "USSR":
                     e.Graphics.DrawImage(Properties.Resources.soviet, 25, 350, 50, 50);
                     break;
-                case 2:
+                case "Germany":
                     e.Graphics.DrawImage(Properties.Resources.Nazi, 25, 350, 50, 50);
                     break;
-                case 3:
+                case "UK":
                     e.Graphics.DrawImage(Properties.Resources.UK_raf, 25, 350, 50, 50);
                     break;
-                case 4:
+                case "Japan":
                     e.Graphics.DrawImage(Properties.Resources.japan_sun, 25, 350, 50, 50);
                     break;
-                case 5:
+                case "USA":
                     e.Graphics.DrawImage(Properties.Resources.usa_star, 25, 350, 50, 50);
                     break;
                 default:
