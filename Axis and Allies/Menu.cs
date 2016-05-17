@@ -13,6 +13,9 @@ namespace Axis_and_Allies
     public partial class Menu : UserControl
     {
         bool newGame = false;
+
+        public static int nation;
+
         public Menu()
         {
             InitializeComponent();
@@ -33,6 +36,7 @@ namespace Axis_and_Allies
             {
                 if (sender.Equals(gameButton))
                 {
+                    nation = 1;
                     // f is the form that this control is on - ("this" is the current User Control)
                     Form f = this.FindForm();
                     f.Controls.Remove(this);
@@ -40,9 +44,12 @@ namespace Axis_and_Allies
                     //if there is a wrong press then game over
                     Game g = new Game();
                     f.Controls.Add(g);
+
+                    
                 }
                 else if (sender.Equals(button2))
                 {
+                    nation = 2;
                     // f is the form that this control is on - ("this" is the current User Control)
                     Form f = this.FindForm();
                     f.Controls.Remove(this);
@@ -50,9 +57,12 @@ namespace Axis_and_Allies
                     //if there is a wrong press then game over
                     Game g = new Game();
                     f.Controls.Add(g);
+
+                    
                 }
                 else if (sender.Equals(LoadButton))
                 {
+                    nation = 3;
                     // f is the form that this control is on - ("this" is the current User Control)
                     Form f = this.FindForm();
                     f.Controls.Remove(this);
@@ -60,9 +70,12 @@ namespace Axis_and_Allies
                     //if there is a wrong press then game over
                     Game g = new Game();
                     f.Controls.Add(g);
+
+                    
                 }
                 else if (sender.Equals(button4))
                 {
+                    nation = 4;
                     // f is the form that this control is on - ("this" is the current User Control)
                     Form f = this.FindForm();
                     f.Controls.Remove(this);
@@ -70,9 +83,12 @@ namespace Axis_and_Allies
                     //if there is a wrong press then game over
                     Game g = new Game();
                     f.Controls.Add(g);
+
+                    
                 }
                 else if (sender.Equals(quitButton))
                 {
+                    nation = 5;
                     // f is the form that this control is on - ("this" is the current User Control)
                     Form f = this.FindForm();
                     f.Controls.Remove(this);
@@ -80,6 +96,8 @@ namespace Axis_and_Allies
                     //if there is a wrong press then game over
                     Game g = new Game();
                     f.Controls.Add(g);
+
+                    
                 }
             }
 
