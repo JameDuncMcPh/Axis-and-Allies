@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace Axis_and_Allies
 {
@@ -15,20 +16,21 @@ namespace Axis_and_Allies
 
         #region Variables
         //Ints
-        int income;
+        int income, counter, amount;
         string nation;
 
         #region Units Lists
         List<Unit> germany, western_Europe, southern_Europe, balkans, eatern_Europe;
 
-
+        List<Unit>[] army;
         #endregion
 
         #region Provinces
-        List<Province> world = new List<Province>();
-
         //europe
         Province Germany, Western_Europe, Southern_Europe, Balkans, Eatern_Europe;
+
+        //Array world = new Province { };
+        Province[] world;
         #endregion
 
         List<string> map = new List<string> { "Germany", "Western_Europe", "Southern_Europe", "Balkans", "Eatern_Europe" };
@@ -39,25 +41,29 @@ namespace Axis_and_Allies
         {
             InitializeComponent();
 
+            world = new Province[] { Germany, Western_Europe, Southern_Europe, Southern_Europe, Balkans,Eatern_Europe};
+
+            
+
             switch (Menu.nation)
             {
-                case 1:
+                case "USSR":
                     income = 7;
                     break;
 
-                case 2:
+                case "Germany":
                     income = 12;
                     break;
 
-                case 3:
+                case "UK":
                     income = 12;
                     break;
 
-                case 4:
+                case "Japan":
                     income = 9;
                     break;
 
-                case 5:
+                case "USA":
                     income = 12;
                     break;
 
@@ -76,7 +82,51 @@ namespace Axis_and_Allies
 
         private void Set_up()
         {
-            Unit i = new Unit("infantry", nation, );
+            counter = 0;
+            amount = 0;
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load("Setup.xml");
+
+            //create a node variable to represent the parent element
+            XmlNode parent;
+            parent = doc.DocumentElement;
+
+            foreach (XmlNode child in parent)
+            {
+                if (child.Name == "world")
+                {
+                    foreach (XmlNode grandchild in child)
+                    {
+                        Unit inf = new Unit("infantry", "Geramny", Convert.ToString(world[counter]));
+                        Unit art = new Unit("infantry", "Geramny", Convert.ToString(world[counter]));
+                        Unit arm = new Unit("infantry", "Geramny", Convert.ToString(world[counter]));
+                        Unit fig = new Unit("infantry", "Geramny", Convert.ToString(world[counter]));
+                        Unit bom = new Unit("infantry", "Geramny", Convert.ToString(world[counter]));
+
+                        foreach (XmlNode greatgrandchild in grandchild)
+                        {
+                            amount = Convert.ToInt16(greatgrandchild.InnerText);
+
+                            for (int i = 0; i < amount; i ++)
+                            {
+                                if (greatgrandchild.Name == "infantry")
+                                {
+                                    world[counter]
+                                }
+                            }
+
+                        }
+
+                        counter++;
+                        
+                        
+
+                               
+                      
+                    }
+                }
+            }
         }
 
         private void Income()
@@ -108,6 +158,11 @@ namespace Axis_and_Allies
                 default:
                     break;
             }
+        }
+
+        private void germanyButton_Click(object sender, EventArgs e)
+        {
+               
         }
     }
 }

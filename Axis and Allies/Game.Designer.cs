@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.phaseLabel = new System.Windows.Forms.Label();
+            this.germanyButton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.provinceLabel = new System.Windows.Forms.Label();
+            this.garrisonLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // phaseLabel
@@ -40,11 +44,53 @@
             this.phaseLabel.TabIndex = 0;
             this.phaseLabel.Text = "label1";
             // 
+            // germanyButton
+            // 
+            this.germanyButton.FlatAppearance.BorderSize = 0;
+            this.germanyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.germanyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.germanyButton.ForeColor = System.Drawing.Color.Transparent;
+            this.germanyButton.Location = new System.Drawing.Point(180, 110);
+            this.germanyButton.Name = "germanyButton";
+            this.germanyButton.Size = new System.Drawing.Size(75, 75);
+            this.germanyButton.TabIndex = 1;
+            this.germanyButton.UseVisualStyleBackColor = true;
+            this.germanyButton.Click += new System.EventHandler(this.germanyButton_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(66, 315);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // provinceLabel
+            // 
+            this.provinceLabel.AutoSize = true;
+            this.provinceLabel.Location = new System.Drawing.Point(177, 325);
+            this.provinceLabel.Name = "provinceLabel";
+            this.provinceLabel.Size = new System.Drawing.Size(0, 13);
+            this.provinceLabel.TabIndex = 3;
+            // 
+            // garrisonLabel
+            // 
+            this.garrisonLabel.AutoSize = true;
+            this.garrisonLabel.Location = new System.Drawing.Point(177, 352);
+            this.garrisonLabel.Name = "garrisonLabel";
+            this.garrisonLabel.Size = new System.Drawing.Size(0, 13);
+            this.garrisonLabel.TabIndex = 4;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.garrisonLabel);
+            this.Controls.Add(this.provinceLabel);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.germanyButton);
             this.Controls.Add(this.phaseLabel);
             this.Name = "Game";
             this.Size = new System.Drawing.Size(500, 500);
@@ -58,5 +104,9 @@
         #endregion
 
         private System.Windows.Forms.Label phaseLabel;
+        private System.Windows.Forms.Button germanyButton;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label provinceLabel;
+        private System.Windows.Forms.Label garrisonLabel;
     }
 }

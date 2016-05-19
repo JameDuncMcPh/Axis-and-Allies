@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<world>
+  
+  <player>
+    <IPC>"money"</IPC>
+    <country>"none"</country>
+    <phase>"income"</phase>
+  </player>
+  
+  <map>
+    <Germany>
+      <infantry>"3"</infantry>
+      <artillery>"0"</artillery>
+      <armour>"0"</armour>
+      <figther>"1"</figther>
+      <bomber>"1"</bomber>
+    </Germany>
+    <WesternEurope>
+      <infantry>"1"</infantry>
+      <artillery>"0"</artillery>
+      <armour>"1"</armour>
+      <figther>"1"</figther>
+      <bomber>"0"</bomber>
+    </WesternEurope>
+    <SouthernEurope>
+      <infantry>"2"</infantry>
+      <artillery>"0"</artillery>
+      <armour>"0"</armour>
+      <figther>"1"</figther>
+      <bomber>"0"</bomber>
+    </SouthernEurope>
+    <EasternEurope>
+      <infantry>"4"</infantry>
+      <artillery>"0"</artillery>
+      <armour>"2"</armour>
+      <figther>"0"</figther>
+      <bomber>"0"</bomber>
+    </EasternEurope>
+    <Balkans>
+      <infantry>"0"</infantry>
+      <artillery>"0"</artillery>
+      <armour>"0"</armour>
+      <figther>"0"</figther>
+      <bomber>"0"</bomber>
+    </Balkans>
+  </map>
+
+</world>

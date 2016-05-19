@@ -101,7 +101,27 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\map.jpg" />
+    <None Include="Resources\World_War_II_Revised.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nazi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\soviet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UK raf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usa star.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\japan sun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Setup.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
