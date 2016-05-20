@@ -17,7 +17,7 @@ namespace Axis_and_Allies
         #region Variables
         //Ints
         int income, counter, amount;
-        string nation;
+        string nation, sting;
 
         #region Units Lists
         List<Unit> germany, western_Europe, southern_Europe, balkans, eatern_Europe;
@@ -78,12 +78,14 @@ namespace Axis_and_Allies
 
             nation = Menu.nation;
 
+            Set_up();
         }
 
         private void Set_up()
         {
             counter = 0;
             amount = 0;
+            sting = "";
 
             XmlDocument doc = new XmlDocument();
             doc.Load("Setup.xml");
@@ -108,22 +110,77 @@ namespace Axis_and_Allies
                         {
                             amount = Convert.ToInt16(greatgrandchild.InnerText);
 
-                            for (int i = 0; i < amount; i ++)
+                            if (greatgrandchild.Name == "infantry")
                             {
-                                if (greatgrandchild.Name == "infantry")
+                                for (int i = 0; i < amount; i++)
                                 {
-                                    world[counter]
+                                    world[counter].garrison.Add(inf);
                                 }
                             }
+                            else if (greatgrandchild.Name == "artillery")
+                            {
+                                for (int i = 0; i < amount; i++)
+                                {
+                                    world[counter].garrison.Add(art);
+                                }
+                            }
+                            else if (greatgrandchild.Name == "armour")
+                            {
+                                for (int i = 0; i < amount; i++)
+                                {
+                                    world[counter].garrison.Add(arm);
+                                }
+                            }
+                            else if (greatgrandchild.Name == "figther")
+                            {
+                                for (int i = 0; i < amount; i++)
+                                {
+                                    world[counter].garrison.Add(fig);
+                                }
+                            }
+                            else if (greatgrandchild.Name == "bomber")
+                            {
+                                for (int i = 0; i < amount; i++)
+                                {
+                                    world[counter].garrison.Add(bom);
+                                }
+                            }
+                            else if (greatgrandchild.Name == "landcon")
+                            {
+                                foreach (char c in greatgrandchild.InnerText)
+                                {
+                                    if (c != ',')
+                                    {
+                                        sting += c;
+                                    }
 
+                                    foreach (Province p in world)
+                                    {
+                                        if (sting == Convert.ToString(p))
+                                        {
+                                            world[counter].landConnection.Add(sting);
+                                            sting = "";
+                                        }
+                                    }
+                                }
+                            }
+                            else if (greatgrandchild.Name == "owner")
+                            {
+                                world[counter].owner = greatgrandchild.InnerText;
+                            }
+                            else if (greatgrandchild.Name == "IC")
+                            {
+                                if (greatgrandchild.InnerText == "YES")
+                                {
+                                    world[counter].factory = "yes";
+                                }
+                                else
+                                {
+                                    world[counter].factory = "no";
+                                }
+                            }
                         }
-
                         counter++;
-                        
-                        
-
-                               
-                      
                     }
                 }
             }

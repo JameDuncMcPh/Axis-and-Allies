@@ -14,6 +14,9 @@
       <armour>"0"</armour>
       <figther>"1"</figther>
       <bomber>"1"</bomber>
+      <landcon>"Weatern_Europe,Southern_Europe,Eastern_Europe,Balkans"</landcon>
+      <owner>"Germany"</owner>
+      <IC>"YES"</IC>
     </Germany>
     <WesternEurope>
       <infantry>"1"</infantry>
@@ -21,6 +24,9 @@
       <armour>"1"</armour>
       <figther>"1"</figther>
       <bomber>"0"</bomber>
+      <landcon>"Germany,Southern_Europe"</landcon>
+      <owner>"Germany"</owner>
+      <IC>"NO"</IC>
     </WesternEurope>
     <SouthernEurope>
       <infantry>"2"</infantry>
@@ -28,6 +34,9 @@
       <armour>"0"</armour>
       <figther>"1"</figther>
       <bomber>"0"</bomber>
+      <landcon>"Weatern_Europe,Germany,Balkans"</landcon>
+      <owner>"Germany"</owner>
+      <IC>"NO"</IC>
     </SouthernEurope>
     <EasternEurope>
       <infantry>"4"</infantry>
@@ -35,6 +44,9 @@
       <armour>"2"</armour>
       <figther>"0"</figther>
       <bomber>"0"</bomber>
+      <landcon>"Germany, Balkans"</landcon>
+      <owner>"Germany"</owner>
+      <IC>"NO"</IC>
     </EasternEurope>
     <Balkans>
       <infantry>"0"</infantry>
@@ -42,6 +54,9 @@
       <armour>"0"</armour>
       <figther>"0"</figther>
       <bomber>"0"</bomber>
+      <landcon>"Germany,Balkans"</landcon>
+      <owner>"Germany"</owner>
+      <IC>"NO"</IC>
     </Balkans>
   </map>
 
