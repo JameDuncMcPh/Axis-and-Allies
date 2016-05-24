@@ -28,7 +28,7 @@ namespace Axis_and_Allies
 
                     break;
 
-                case "artilleye":
+                case "artillery":
 
                     attack = 2;
                     defense = 2;
@@ -48,6 +48,26 @@ namespace Axis_and_Allies
 
                     break;
 
+                case "fighter":
+
+                    attack = 4;
+                    defense = 4;
+                    move = 3;
+                    hitpoint = 1;
+                    cost = 10;
+
+                    break;
+
+                case "bomber":
+
+                    attack = 4;
+                    defense = 1;
+                    move = 6;
+                    hitpoint = 1;
+                    cost = 15;
+
+                    break;
+
 
 
                 default:
@@ -55,7 +75,7 @@ namespace Axis_and_Allies
             }
 
             owner = owner_;
-            province = "null";
+            province = province_;
         }
 
         void unitMove(Unit a, Province d, Province b)

@@ -32,7 +32,8 @@
             this.germanyButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.provinceLabel = new System.Windows.Forms.Label();
-            this.garrisonLabel = new System.Windows.Forms.Label();
+            this.westernEuropeButton = new System.Windows.Forms.Button();
+            this.garrisonBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // phaseLabel
@@ -69,25 +70,40 @@
             // provinceLabel
             // 
             this.provinceLabel.AutoSize = true;
-            this.provinceLabel.Location = new System.Drawing.Point(177, 325);
+            this.provinceLabel.Location = new System.Drawing.Point(379, 325);
             this.provinceLabel.Name = "provinceLabel";
             this.provinceLabel.Size = new System.Drawing.Size(0, 13);
             this.provinceLabel.TabIndex = 3;
             // 
-            // garrisonLabel
+            // westernEuropeButton
             // 
-            this.garrisonLabel.AutoSize = true;
-            this.garrisonLabel.Location = new System.Drawing.Point(177, 352);
-            this.garrisonLabel.Name = "garrisonLabel";
-            this.garrisonLabel.Size = new System.Drawing.Size(0, 13);
-            this.garrisonLabel.TabIndex = 4;
+            this.westernEuropeButton.BackColor = System.Drawing.Color.Transparent;
+            this.westernEuropeButton.FlatAppearance.BorderSize = 0;
+            this.westernEuropeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.westernEuropeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.westernEuropeButton.ForeColor = System.Drawing.Color.Transparent;
+            this.westernEuropeButton.Location = new System.Drawing.Point(121, 122);
+            this.westernEuropeButton.Name = "westernEuropeButton";
+            this.westernEuropeButton.Size = new System.Drawing.Size(53, 82);
+            this.westernEuropeButton.TabIndex = 5;
+            this.westernEuropeButton.UseVisualStyleBackColor = false;
+            this.westernEuropeButton.Click += new System.EventHandler(this.westernEuropeButton_Click);
+            // 
+            // garrisonBox
+            // 
+            this.garrisonBox.FormattingEnabled = true;
+            this.garrisonBox.Location = new System.Drawing.Point(382, 349);
+            this.garrisonBox.Name = "garrisonBox";
+            this.garrisonBox.Size = new System.Drawing.Size(45, 95);
+            this.garrisonBox.TabIndex = 6;
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.garrisonLabel);
+            this.Controls.Add(this.garrisonBox);
+            this.Controls.Add(this.westernEuropeButton);
             this.Controls.Add(this.provinceLabel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.germanyButton);
@@ -107,6 +123,7 @@
         private System.Windows.Forms.Button germanyButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label provinceLabel;
-        private System.Windows.Forms.Label garrisonLabel;
+        private System.Windows.Forms.Button westernEuropeButton;
+        private System.Windows.Forms.ListBox garrisonBox;
     }
 }

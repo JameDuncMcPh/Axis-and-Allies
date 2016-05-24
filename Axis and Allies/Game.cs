@@ -19,21 +19,12 @@ namespace Axis_and_Allies
         int income, counter, amount;
         string nation, sting;
 
-        #region Units Lists
-        List<Unit> germany, western_Europe, southern_Europe, balkans, eatern_Europe;
-
-        List<Unit>[] army;
-        #endregion
-
         #region Provinces
         //europe
         Province Germany, Western_Europe, Southern_Europe, Balkans, Eatern_Europe;
 
-        //Array world = new Province { };
         Province[] world;
-        #endregion
-
-        List<string> map = new List<string> { "Germany", "Western_Europe", "Southern_Europe", "Balkans", "Eatern_Europe" };
+        #endregion    
 
         #endregion
 
@@ -41,9 +32,7 @@ namespace Axis_and_Allies
         {
             InitializeComponent();
 
-            world = new Province[] { Germany, Western_Europe, Southern_Europe, Southern_Europe, Balkans,Eatern_Europe};
-
-            
+            world = new Province[] { Germany, Western_Europe, Southern_Europe, Southern_Europe, Balkans, Eatern_Europe };
 
             switch (Menu.nation)
             {
@@ -71,7 +60,7 @@ namespace Axis_and_Allies
                     break;
             }
         }
-        
+
         private void Game_Load(object sender, EventArgs e)
         {
             this.Focus();
@@ -87,6 +76,8 @@ namespace Axis_and_Allies
             amount = 0;
             sting = "";
 
+            
+
             XmlDocument doc = new XmlDocument();
             doc.Load("Setup.xml");
 
@@ -96,19 +87,26 @@ namespace Axis_and_Allies
 
             foreach (XmlNode child in parent)
             {
-                if (child.Name == "world")
+                if (child.Name == "map")
                 {
                     foreach (XmlNode grandchild in child)
                     {
-                        Unit inf = new Unit("infantry", "Geramny", Convert.ToString(world[counter]));
-                        Unit art = new Unit("infantry", "Geramny", Convert.ToString(world[counter]));
-                        Unit arm = new Unit("infantry", "Geramny", Convert.ToString(world[counter]));
-                        Unit fig = new Unit("infantry", "Geramny", Convert.ToString(world[counter]));
-                        Unit bom = new Unit("infantry", "Geramny", Convert.ToString(world[counter]));
+                        Unit inf = new Unit("infantry", "Germany", Convert.ToString(world[counter]));
+                        Unit art = new Unit("artillery", "Germany", Convert.ToString(world[counter]));
+                        Unit arm = new Unit("armour", "Germany", Convert.ToString(world[counter]));
+                        Unit fig = new Unit("fighter", "Germany", Convert.ToString(world[counter]));
+                        Unit bom = new Unit("bomber", "Germany", Convert.ToString(world[counter]));
 
                         foreach (XmlNode greatgrandchild in grandchild)
                         {
-                            amount = Convert.ToInt16(greatgrandchild.InnerText);
+                            try
+                            {
+                                amount = Convert.ToInt16(greatgrandchild.InnerText);
+                            }
+                            catch
+                            {
+                                amount = 0;
+                            }
 
                             if (greatgrandchild.Name == "infantry")
                             {
@@ -131,7 +129,7 @@ namespace Axis_and_Allies
                                     world[counter].garrison.Add(arm);
                                 }
                             }
-                            else if (greatgrandchild.Name == "figther")
+                            else if (greatgrandchild.Name == "fighter")
                             {
                                 for (int i = 0; i < amount; i++)
                                 {
@@ -166,17 +164,20 @@ namespace Axis_and_Allies
                             }
                             else if (greatgrandchild.Name == "owner")
                             {
-                                world[counter].owner = greatgrandchild.InnerText;
+                                //world[counter].owner = greatgrandchild.InnerText;
+                                world[counter].owner = "";
                             }
                             else if (greatgrandchild.Name == "IC")
                             {
                                 if (greatgrandchild.InnerText == "YES")
                                 {
                                     world[counter].factory = "yes";
+                                    
                                 }
                                 else
                                 {
-                                    world[counter].factory = "no";
+                                   world[counter].factory = "no";
+                                    
                                 }
                             }
                         }
@@ -188,7 +189,7 @@ namespace Axis_and_Allies
 
         private void Income()
         {
-            
+
         }
 
         private void Game_Paint(object sender, PaintEventArgs e)
@@ -219,7 +220,42 @@ namespace Axis_and_Allies
 
         private void germanyButton_Click(object sender, EventArgs e)
         {
-               
+            provinceLabel.Text = "Germany";
+            garrisonBox.Text = "";
+
+            foreach (Unit u in Germany.garrison)
+            {
+                switch (u.type)
+                {
+                    case "infantry":
+                        garrisonBox.Text += "inf";
+                        break;
+
+                    case "artillery":
+                        garrisonBox.Text += "art";
+                        break;
+
+                    case "tank":
+                        garrisonBox.Text += "arm";
+                        break;
+
+                    case "figther":
+                        garrisonBox.Text += "fig";
+                        break;
+
+                    case "bomber":
+                        garrisonBox.Text += "bom";
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
+
+        private void westernEuropeButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
