@@ -20,6 +20,10 @@ namespace Axis_and_Allies
         string nation, sting;
 
         #region Provinces
+
+        List<Unit> unit = new List<Unit>();
+        List<string> s = new List<string>();
+
         //europe
         Province Germany, Western_Europe, Southern_Europe, Balkans, Eatern_Europe;
 
@@ -32,7 +36,7 @@ namespace Axis_and_Allies
         {
             InitializeComponent();
 
-            world = new Province[] { Germany, Western_Europe, Southern_Europe, Southern_Europe, Balkans, Eatern_Europe };
+           
 
             switch (Menu.nation)
             {
@@ -67,6 +71,22 @@ namespace Axis_and_Allies
 
             nation = Menu.nation;
 
+            #region Provinces
+
+            List<Unit> unit;
+            List<string> s = new List<string>();
+
+            //europe
+            Province Germany = new Province(unit = new List<Unit>(), s, s, "", "");
+            Province Western_Europe = new Province(unit = new List<Unit>(), s, s, "", "");
+            Province Southern_Europe = new Province(unit = new List<Unit>(), s, s, "", "");
+            Province Balkans = new Province(unit = new List<Unit>(), s, s, "", "");
+            Province Eatern_Europe = new Province(unit = new List<Unit>(), s, s, "", "");
+
+            #endregion
+
+            world = new Province[] { Germany, Western_Europe,  Southern_Europe, Balkans, Eatern_Europe };
+
             Set_up();
         }
 
@@ -75,8 +95,6 @@ namespace Axis_and_Allies
             counter = 0;
             amount = 0;
             sting = "";
-
-            
 
             XmlDocument doc = new XmlDocument();
             doc.Load("Setup.xml");
@@ -164,8 +182,8 @@ namespace Axis_and_Allies
                             }
                             else if (greatgrandchild.Name == "owner")
                             {
-                                //world[counter].owner = greatgrandchild.InnerText;
-                                world[counter].owner = "";
+                                world[counter].owner = greatgrandchild.InnerText;
+                                
                             }
                             else if (greatgrandchild.Name == "IC")
                             {
@@ -223,28 +241,29 @@ namespace Axis_and_Allies
             provinceLabel.Text = "Germany";
             garrisonBox.Text = "";
 
-            foreach (Unit u in Germany.garrison)
+            foreach (Unit u in world[0].garrison)
             {
                 switch (u.type)
                 {
                     case "infantry":
-                        garrisonBox.Text += "inf";
+                        //garrisonBox.Text += "inf"+"\n";
+                        garrisonBox.Items.Add("inf");
                         break;
 
                     case "artillery":
-                        garrisonBox.Text += "art";
+                        garrisonBox.Text += "art"+"\n";
                         break;
 
                     case "tank":
-                        garrisonBox.Text += "arm";
+                        garrisonBox.Text += "arm"+"\n";
                         break;
 
                     case "figther":
-                        garrisonBox.Text += "fig";
+                        garrisonBox.Text += "fig"+"\n";
                         break;
 
                     case "bomber":
-                        garrisonBox.Text += "bom";
+                        garrisonBox.Text += "bom"+"\n";
                         break;
                     default:
                         break;
