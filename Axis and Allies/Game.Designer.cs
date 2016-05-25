@@ -37,7 +37,7 @@
             this.garrisonBox2 = new System.Windows.Forms.ListBox();
             this.movingButton = new System.Windows.Forms.Button();
             this.movingButton2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dropDown = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // phaseLabel
@@ -74,7 +74,7 @@
             // provinceLabel
             // 
             this.provinceLabel.AutoSize = true;
-            this.provinceLabel.Location = new System.Drawing.Point(351, 321);
+            this.provinceLabel.Location = new System.Drawing.Point(310, 322);
             this.provinceLabel.Name = "provinceLabel";
             this.provinceLabel.Size = new System.Drawing.Size(0, 13);
             this.provinceLabel.TabIndex = 3;
@@ -96,7 +96,7 @@
             // garrisonBox
             // 
             this.garrisonBox.FormattingEnabled = true;
-            this.garrisonBox.Location = new System.Drawing.Point(354, 345);
+            this.garrisonBox.Location = new System.Drawing.Point(313, 346);
             this.garrisonBox.Name = "garrisonBox";
             this.garrisonBox.Size = new System.Drawing.Size(45, 95);
             this.garrisonBox.TabIndex = 6;
@@ -104,14 +104,14 @@
             // garrisonBox2
             // 
             this.garrisonBox2.FormattingEnabled = true;
-            this.garrisonBox2.Location = new System.Drawing.Point(424, 345);
+            this.garrisonBox2.Location = new System.Drawing.Point(393, 346);
             this.garrisonBox2.Name = "garrisonBox2";
             this.garrisonBox2.Size = new System.Drawing.Size(45, 95);
             this.garrisonBox2.TabIndex = 7;
             // 
             // movingButton
             // 
-            this.movingButton.Location = new System.Drawing.Point(400, 365);
+            this.movingButton.Location = new System.Drawing.Point(364, 366);
             this.movingButton.Name = "movingButton";
             this.movingButton.Size = new System.Drawing.Size(23, 23);
             this.movingButton.TabIndex = 8;
@@ -121,7 +121,7 @@
             // 
             // movingButton2
             // 
-            this.movingButton2.Location = new System.Drawing.Point(400, 394);
+            this.movingButton2.Location = new System.Drawing.Point(364, 395);
             this.movingButton2.Name = "movingButton2";
             this.movingButton2.Size = new System.Drawing.Size(23, 23);
             this.movingButton2.TabIndex = 9;
@@ -129,19 +129,21 @@
             this.movingButton2.UseVisualStyleBackColor = true;
             this.movingButton2.Click += new System.EventHandler(this.movingButton2_Click);
             // 
-            // textBox1
+            // dropDown
             // 
-            this.textBox1.Location = new System.Drawing.Point(424, 322);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(45, 20);
-            this.textBox1.TabIndex = 10;
+            this.dropDown.FormattingEnabled = true;
+            this.dropDown.Location = new System.Drawing.Point(378, 314);
+            this.dropDown.Name = "dropDown";
+            this.dropDown.Size = new System.Drawing.Size(80, 21);
+            this.dropDown.TabIndex = 11;
+            this.dropDown.SelectedIndexChanged += new System.EventHandler(this.dropDown_SelectedIndexChanged);
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.dropDown);
             this.Controls.Add(this.movingButton2);
             this.Controls.Add(this.movingButton);
             this.Controls.Add(this.garrisonBox2);
@@ -171,6 +173,6 @@
         private System.Windows.Forms.ListBox garrisonBox2;
         private System.Windows.Forms.Button movingButton;
         private System.Windows.Forms.Button movingButton2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox dropDown;
     }
 }

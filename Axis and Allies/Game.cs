@@ -16,8 +16,8 @@ namespace Axis_and_Allies
 
         #region Variables
         //Ints
-        int income, counter, amount;
-        string nation, sting;
+        int income, counter, secondCounter, amount;
+        string nation, sting, location;
 
         #region Provinces
 
@@ -77,18 +77,18 @@ namespace Axis_and_Allies
             List<string> s = new List<string>();
 
             //europe
-            Province Germany = new Province(unit = new List<Unit>(), s, s, "", "");
-            Province Western_Europe = new Province(unit = new List<Unit>(), s, s, "", "");
-            Province Southern_Europe = new Province(unit = new List<Unit>(), s, s, "", "");
-            Province Balkans = new Province(unit = new List<Unit>(), s, s, "", "");
-            Province Eatern_Europe = new Province(unit = new List<Unit>(), s, s, "", "");
+            Province Germany = new Province(unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Western_Europe = new Province(unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Southern_Europe = new Province(unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Balkans = new Province(unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Eatern_Europe = new Province(unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
 
             #endregion
 
             world = new Province[] { Germany, Western_Europe,  Southern_Europe, Balkans, Eatern_Europe };
 
             Set_up();
-        }
+        }      
 
         private void Set_up()
         {
@@ -169,14 +169,10 @@ namespace Axis_and_Allies
                                     {
                                         sting += c;
                                     }
-
-                                    foreach (Province p in world)
+                                    else
                                     {
-                                        if (sting == Convert.ToString(p))
-                                        {
-                                            world[counter].landConnection.Add(sting);
-                                            sting = "";
-                                        }
+                                        world[counter].landConnection.Add(sting);
+                                        sting = "";
                                     }
                                 }
                             }
@@ -235,6 +231,99 @@ namespace Axis_and_Allies
             }
         }
 
+        private void movingButton_Click(object sender, EventArgs e)
+        {
+            Unit inf = new Unit("infantry", "Germany", Convert.ToString(world[counter]));
+            Unit art = new Unit("artillery", "Germany", Convert.ToString(world[counter]));
+            Unit arm = new Unit("armour", "Germany", Convert.ToString(world[counter]));
+            Unit fig = new Unit("fighter", "Germany", Convert.ToString(world[counter]));
+            Unit bom = new Unit("bomber", "Germany", Convert.ToString(world[counter]));
+
+            if (garrisonBox.SelectedIndex.ToString() == "inf")
+            {
+                world[counter].garrison.Remove(inf);
+                world[secondCounter].garrison.Add(inf);
+                garrisonBox2.Items.Add("inf");
+                garrisonBox.Items.Remove("inf");
+            }
+            else if (garrisonBox.SelectedIndex.ToString() == "art")
+            {
+                world[counter].garrison.Remove(art);
+                world[secondCounter].garrison.Add(art);
+                garrisonBox2.Items.Add("art");
+                garrisonBox.Items.Remove("art");
+            }
+            else if (garrisonBox.SelectedIndex.ToString() == "arm")
+            {
+                world[counter].garrison.Remove(arm);
+                world[secondCounter].garrison.Add(arm);
+                garrisonBox2.Items.Add("arm");
+                garrisonBox.Items.Remove("arm");
+            }
+            else if (garrisonBox.SelectedIndex.ToString() == "fig")
+            {
+                world[counter].garrison.Remove(fig);
+                world[secondCounter].garrison.Add(fig);
+                garrisonBox2.Items.Add("fig");
+                garrisonBox.Items.Remove("fig");
+            }
+            else if (garrisonBox.SelectedIndex.ToString() == "bom")
+            {
+                world[counter].garrison.Remove(bom);
+                world[secondCounter].garrison.Add(bom);
+                garrisonBox2.Items.Add("bom");
+                garrisonBox.Items.Remove("bom");
+            }
+        }
+
+        private void movingButton2_Click(object sender, EventArgs e)
+        {
+            garrisonBox.Items.Add(garrisonBox2.SelectedIndex.ToString());
+            garrisonBox2.Items.Remove(garrisonBox2.SelectedIndex.ToString());
+            
+        }
+
+        private void dropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            secondCounter = 0;
+            location = dropDown.SelectedItem.ToString();
+
+            foreach (Province p in world)
+            {
+                if (location == Convert.ToString(p))
+                {
+                    foreach (Unit u in p.garrison)
+                    {
+                        switch (u.type)
+                        {
+                            case "infantry":
+                                garrisonBox2.Items.Add("inf");
+                                break;
+
+                            case "artillery":
+                                garrisonBox2.Items.Add("art");
+                                break;
+
+                            case "tank":
+                                garrisonBox2.Items.Add("arm");
+                                break;
+
+                            case "fighter":
+                                garrisonBox2.Items.Add("fig");
+                                break;
+
+                            case "bomber":
+                                garrisonBox2.Items.Add("bom");
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                secondCounter++;
+            }
+        }
+
         private void germanyButton_Click(object sender, EventArgs e)
         {
             counter = 0;
@@ -268,29 +357,16 @@ namespace Axis_and_Allies
                         break;
                 }
             }
+
+            foreach (string s in world[counter].landConnection)
+            {
+                dropDown.Items.Add(s);
+            }
         }
 
         private void westernEuropeButton_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void movingButton_Click(object sender, EventArgs e)
-        {
-            foreach (string s in world[counter].landConnection)
-            {
-                if (s == textBox1.Text)
-                {
-                    garrisonBox2.Items.Add(garrisonBox.SelectedIndex.ToString());
-                    garrisonBox.Items.Remove(garrisonBox.SelectedIndex.ToString());
-                }
-            }    
-        }
-
-        private void movingButton2_Click(object sender, EventArgs e)
-        {
-            garrisonBox.Items.Add(garrisonBox2.SelectedIndex.ToString());
-            garrisonBox2.Items.Remove(garrisonBox2.SelectedIndex.ToString());
         }
     }
 }
