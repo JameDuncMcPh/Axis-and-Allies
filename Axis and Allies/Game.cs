@@ -182,8 +182,7 @@ namespace Axis_and_Allies
                             }
                             else if (greatgrandchild.Name == "owner")
                             {
-                                world[counter].owner = greatgrandchild.InnerText;
-                                
+                                world[counter].owner = greatgrandchild.InnerText;    
                             }
                             else if (greatgrandchild.Name == "IC")
                             {
@@ -238,32 +237,32 @@ namespace Axis_and_Allies
 
         private void germanyButton_Click(object sender, EventArgs e)
         {
+            counter = 0;
             provinceLabel.Text = "Germany";
             garrisonBox.Text = "";
 
-            foreach (Unit u in world[0].garrison)
+            foreach (Unit u in world[counter].garrison)
             {
                 switch (u.type)
                 {
                     case "infantry":
-                        //garrisonBox.Text += "inf"+"\n";
                         garrisonBox.Items.Add("inf");
                         break;
 
                     case "artillery":
-                        garrisonBox.Text += "art"+"\n";
+                        garrisonBox.Items.Add("art");
                         break;
 
                     case "tank":
-                        garrisonBox.Text += "arm"+"\n";
+                        garrisonBox.Items.Add("arm");
                         break;
 
-                    case "figther":
-                        garrisonBox.Text += "fig"+"\n";
+                    case "fighter":
+                        garrisonBox.Items.Add("fig");
                         break;
 
                     case "bomber":
-                        garrisonBox.Text += "bom"+"\n";
+                        garrisonBox.Items.Add("bom");
                         break;
                     default:
                         break;
@@ -276,5 +275,22 @@ namespace Axis_and_Allies
 
         }
 
+        private void movingButton_Click(object sender, EventArgs e)
+        {
+            foreach (string s in world[counter].landConnection)
+            {
+                if (s == textBox1.Text)
+                {
+                    garrisonBox2.Items.Add(garrisonBox.SelectedIndex.ToString());
+                    garrisonBox.Items.Remove(garrisonBox.SelectedIndex.ToString());
+                }
+            }    
+        }
+
+        private void movingButton2_Click(object sender, EventArgs e)
+        {
+            garrisonBox.Items.Add(garrisonBox2.SelectedIndex.ToString());
+            garrisonBox2.Items.Remove(garrisonBox2.SelectedIndex.ToString());
+        }
     }
 }
