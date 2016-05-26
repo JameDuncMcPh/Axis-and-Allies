@@ -77,11 +77,11 @@ namespace Axis_and_Allies
             List<string> s = new List<string>();
 
             //europe
-            Province Germany = new Province(unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
-            Province Western_Europe = new Province(unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
-            Province Southern_Europe = new Province(unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
-            Province Balkans = new Province(unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
-            Province Eatern_Europe = new Province(unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Germany = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Western_Europe = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Southern_Europe = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Balkans = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Eatern_Europe = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
 
             #endregion
 
@@ -109,6 +109,8 @@ namespace Axis_and_Allies
                 {
                     foreach (XmlNode grandchild in child)
                     {
+                        world[counter].name = grandchild.Name;
+
                         Unit inf = new Unit("infantry", "Germany", Convert.ToString(world[counter]));
                         Unit art = new Unit("artillery", "Germany", Convert.ToString(world[counter]));
                         Unit arm = new Unit("armour", "Germany", Convert.ToString(world[counter]));
@@ -233,54 +235,18 @@ namespace Axis_and_Allies
 
         private void movingButton_Click(object sender, EventArgs e)
         {
-            Unit inf = new Unit("infantry", "Germany", Convert.ToString(world[counter]));
-            Unit art = new Unit("artillery", "Germany", Convert.ToString(world[counter]));
-            Unit arm = new Unit("armour", "Germany", Convert.ToString(world[counter]));
-            Unit fig = new Unit("fighter", "Germany", Convert.ToString(world[counter]));
-            Unit bom = new Unit("bomber", "Germany", Convert.ToString(world[counter]));
-
-            if (garrisonBox.SelectedIndex.ToString() == "inf")
-            {
-                world[counter].garrison.Remove(inf);
-                world[secondCounter].garrison.Add(inf);
-                garrisonBox2.Items.Add("inf");
-                garrisonBox.Items.Remove("inf");
-            }
-            else if (garrisonBox.SelectedIndex.ToString() == "art")
-            {
-                world[counter].garrison.Remove(art);
-                world[secondCounter].garrison.Add(art);
-                garrisonBox2.Items.Add("art");
-                garrisonBox.Items.Remove("art");
-            }
-            else if (garrisonBox.SelectedIndex.ToString() == "arm")
-            {
-                world[counter].garrison.Remove(arm);
-                world[secondCounter].garrison.Add(arm);
-                garrisonBox2.Items.Add("arm");
-                garrisonBox.Items.Remove("arm");
-            }
-            else if (garrisonBox.SelectedIndex.ToString() == "fig")
-            {
-                world[counter].garrison.Remove(fig);
-                world[secondCounter].garrison.Add(fig);
-                garrisonBox2.Items.Add("fig");
-                garrisonBox.Items.Remove("fig");
-            }
-            else if (garrisonBox.SelectedIndex.ToString() == "bom")
-            {
-                world[counter].garrison.Remove(bom);
-                world[secondCounter].garrison.Add(bom);
-                garrisonBox2.Items.Add("bom");
-                garrisonBox.Items.Remove("bom");
-            }
+            world[secondCounter].garrison.Add(world[counter].garrison[garrisonBox.SelectedIndex]);
+            world[counter].garrison.RemoveAt(garrisonBox.SelectedIndex);
+            garrisonBox2.Items.Add(Convert.ToString(world[counter].garrison[garrisonBox.SelectedIndex]));
+            garrisonBox.Items.Remove(Convert.ToString(world[counter].garrison[garrisonBox.SelectedIndex]));
         }
 
         private void movingButton2_Click(object sender, EventArgs e)
         {
-            garrisonBox.Items.Add(garrisonBox2.SelectedIndex.ToString());
-            garrisonBox2.Items.Remove(garrisonBox2.SelectedIndex.ToString());
-            
+            world[secondCounter].garrison.Add(world[counter].garrison[garrisonBox.SelectedIndex]);
+            world[counter].garrison.RemoveAt(garrisonBox.SelectedIndex);
+            garrisonBox2.Items.Add(Convert.ToString(world[counter].garrison[garrisonBox.SelectedIndex]));
+            garrisonBox.Items.Remove(Convert.ToString(world[counter].garrison[garrisonBox.SelectedIndex]));
         }
 
         private void dropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -290,7 +256,7 @@ namespace Axis_and_Allies
 
             foreach (Province p in world)
             {
-                if (location == Convert.ToString(p))
+                if (location == p.name)
                 {
                     foreach (Unit u in p.garrison)
                     {
@@ -304,7 +270,7 @@ namespace Axis_and_Allies
                                 garrisonBox2.Items.Add("art");
                                 break;
 
-                            case "tank":
+                            case "armour":
                                 garrisonBox2.Items.Add("arm");
                                 break;
 
@@ -327,7 +293,12 @@ namespace Axis_and_Allies
         private void germanyButton_Click(object sender, EventArgs e)
         {
             counter = 0;
-            provinceLabel.Text = "Germany";
+            garrisonBox.Items.Clear();
+            garrisonBox2.Items.Clear();
+            dropDown.Items.Clear();
+
+
+            provinceLabel.Text = world[counter].name;
             garrisonBox.Text = "";
 
             foreach (Unit u in world[counter].garrison)

@@ -12,10 +12,11 @@ namespace Axis_and_Allies
 
         public  List<string> landConnection, seaConnections;
 
-        public string owner, factory;
+        public string owner, factory, name;
 
-        public Province (List<Unit> garrison_, List<string> landConnection_, List<string> seaConnections_, string owner_, string factory_)
+        public Province (string name_, List<Unit> garrison_, List<string> landConnection_, List<string> seaConnections_, string owner_, string factory_)
         {
+            name = name_;
             garrison = garrison_;
             landConnection = landConnection_;
             seaConnections = seaConnections_;
