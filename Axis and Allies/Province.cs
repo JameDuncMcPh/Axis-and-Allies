@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Axis_and_Allies
 {
-    class Province
+    public class Province
     {
         public List<Unit> garrison = new List<Unit>();
 

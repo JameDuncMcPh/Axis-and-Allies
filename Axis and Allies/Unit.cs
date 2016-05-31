@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Axis_and_Allies
 {
-    class Unit
+    public class Unit
     {
         public int attack, defense, hitpoint, cost, move;
 
