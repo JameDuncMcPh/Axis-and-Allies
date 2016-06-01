@@ -60,7 +60,7 @@ namespace Axis_and_Allies
                     }
                 }
             }
-            for (int i = 0; i < attakHits; i++)
+            for (int i = 0; i < defenseHits; i++)
             {
                 foreach (Unit u in Game.world[Game.counter].garrison)
                 {

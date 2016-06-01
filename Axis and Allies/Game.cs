@@ -236,13 +236,22 @@ namespace Axis_and_Allies
             {
                 case 1:
                     phase = 2;
+                    counter = 0;
 
-                    foreach ()
+                    foreach (Province p in world)
                     {
-                        Form f = this.FindForm();
-                        Battle b = new Battle();
-                        f.Controls.Add(b);
-                        b.BringToFront();
+                        foreach (Unit u in p.garrison)
+                        {
+                            if (u.owner != p.owner)
+                            {
+                                Form f = this.FindForm();
+                                Battle b = new Battle();
+                                f.Controls.Add(b);
+                                b.BringToFront();
+                            }
+                        }
+
+                        counter++;
                     }
 
                     break;
