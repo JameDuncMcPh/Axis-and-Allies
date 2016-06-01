@@ -237,7 +237,14 @@ namespace Axis_and_Allies
                 case 1:
                     phase = 2;
 
-                    
+                    foreach ()
+                    {
+                        Form f = this.FindForm();
+                        Battle b = new Battle();
+                        f.Controls.Add(b);
+                        b.BringToFront();
+                    }
+
                     break;
 
                 case 2:

@@ -26,7 +26,7 @@ namespace Axis_and_Allies
 
         private void Battle_Load(object sender, EventArgs e)
         {
-            
+            this.Focus();
         }
 
         private void attackButton_Click(object sender, EventArgs e)
@@ -48,21 +48,36 @@ namespace Axis_and_Allies
                     }
                 }
             }
+
             for (int i = 0; i < attakHits; i ++)
             {
                 foreach (Unit u in Game.world[Game.counter].garrison)
                 {
                     if (u.owner == Game.world[Game.counter].name)
                     {
-                        Game.world[Game.counter]
+                        Game.world[Game.counter].garrison.Remove(u);
+                        break;
                     }
                 }
             }
+            for (int i = 0; i < attakHits; i++)
+            {
+                foreach (Unit u in Game.world[Game.counter].garrison)
+                {
+                    if (u.owner != Game.world[Game.counter].name)
+                    {
+                        Game.world[Game.counter].garrison.Remove(u);
+                        break;
+                    }
+                }
+            }
+            
         }
 
         private void retreatButton_Click(object sender, EventArgs e)
         {
-
+            Form f = this.FindForm();
+            f.Controls.Remove(this);
         }
     }
 }
