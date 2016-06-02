@@ -38,6 +38,8 @@
             this.movingButton = new System.Windows.Forms.Button();
             this.movingButton2 = new System.Windows.Forms.Button();
             this.dropDown = new System.Windows.Forms.ComboBox();
+            this.southernEurope = new System.Windows.Forms.Button();
+            this.easternEurope = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // phaseLabel
@@ -64,7 +66,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(66, 315);
+            this.button2.Location = new System.Drawing.Point(99, 312);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -87,9 +89,9 @@
             this.westernEuropeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.westernEuropeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.westernEuropeButton.ForeColor = System.Drawing.Color.Transparent;
-            this.westernEuropeButton.Location = new System.Drawing.Point(121, 122);
+            this.westernEuropeButton.Location = new System.Drawing.Point(106, 122);
             this.westernEuropeButton.Name = "westernEuropeButton";
-            this.westernEuropeButton.Size = new System.Drawing.Size(53, 82);
+            this.westernEuropeButton.Size = new System.Drawing.Size(68, 82);
             this.westernEuropeButton.TabIndex = 5;
             this.westernEuropeButton.UseVisualStyleBackColor = false;
             this.westernEuropeButton.Click += new System.EventHandler(this.westernEuropeButton_Click);
@@ -139,11 +141,40 @@
             this.dropDown.TabIndex = 11;
             this.dropDown.SelectedIndexChanged += new System.EventHandler(this.dropDown_SelectedIndexChanged);
             // 
+            // southernEurope
+            // 
+            this.southernEurope.BackColor = System.Drawing.Color.Transparent;
+            this.southernEurope.FlatAppearance.BorderSize = 0;
+            this.southernEurope.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.southernEurope.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.southernEurope.ForeColor = System.Drawing.Color.Transparent;
+            this.southernEurope.Location = new System.Drawing.Point(184, 191);
+            this.southernEurope.Name = "southernEurope";
+            this.southernEurope.Size = new System.Drawing.Size(71, 73);
+            this.southernEurope.TabIndex = 13;
+            this.southernEurope.UseVisualStyleBackColor = false;
+            this.southernEurope.Click += new System.EventHandler(this.southernEurope_Click);
+            // 
+            // easternEurope
+            // 
+            this.easternEurope.FlatAppearance.BorderSize = 0;
+            this.easternEurope.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.easternEurope.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.easternEurope.ForeColor = System.Drawing.Color.Transparent;
+            this.easternEurope.Location = new System.Drawing.Point(261, 73);
+            this.easternEurope.Name = "easternEurope";
+            this.easternEurope.Size = new System.Drawing.Size(44, 75);
+            this.easternEurope.TabIndex = 12;
+            this.easternEurope.UseVisualStyleBackColor = true;
+            this.easternEurope.Click += new System.EventHandler(this.easternEurope_Click);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.southernEurope);
+            this.Controls.Add(this.easternEurope);
             this.Controls.Add(this.dropDown);
             this.Controls.Add(this.movingButton2);
             this.Controls.Add(this.movingButton);
@@ -175,5 +206,7 @@
         private System.Windows.Forms.Button movingButton;
         private System.Windows.Forms.Button movingButton2;
         private System.Windows.Forms.ComboBox dropDown;
+        private System.Windows.Forms.Button southernEurope;
+        private System.Windows.Forms.Button easternEurope;
     }
 }

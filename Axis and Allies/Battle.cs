@@ -14,9 +14,8 @@ namespace Axis_and_Allies
     {
 
         Random random = new Random();
-        int attakHits, defenseHits;
+        int attakHits, defenseHits, aInf, aArt, aArm, aFig, aBom, dInf, dArt, dArm, dFig, dBom;
          
-
         public Battle()
         {
             InitializeComponent();
@@ -26,7 +25,73 @@ namespace Axis_and_Allies
 
         private void Battle_Load(object sender, EventArgs e)
         {
+            aInf = aArt = aArm = aFig = aBom = dInf = dArt = dArm = dFig = dBom = 0;
+
             this.Focus();
+
+            foreach (Unit u in Game.world[Game.counter].garrison)
+            {
+                if (u.owner != Game.world[Game.counter].owner)
+                {
+                    attackerLabel.Text = u.owner;
+
+                    if (u.type == "infantry")
+                    {
+                        aInf++;
+                        attackInfLabel.Text = Convert.ToString(aInf);
+                    }
+                    else if (u.type == "artillery")
+                    {
+                        aArt++;
+                        atttackArtLabel.Text = Convert.ToString(aArt);
+                    }
+                    else if (u.type == "armour")
+                    {
+                        aArm++;
+                        attackArmLabel.Text = Convert.ToString(aArm);
+                    }
+                    else if (u.type == "fighter")
+                    {
+                        aFig++;
+                        attackFigLabel.Text = Convert.ToString(aFig);
+                    }
+                    else if (u.type == "bomber")
+                    {
+                        aBom++;
+                        attackBomLabel.Text = Convert.ToString(aBom);
+                    }
+                }
+                else
+                {
+                    if (u.type == "infantry")
+                    {
+                        dInf++;
+                        defenseInfLabel.Text = Convert.ToString(dInf);
+                    }
+                    else if (u.type == "artillery")
+                    {
+                        dArt++;
+                        defenseArtLabel.Text = Convert.ToString(dArt);
+                    }
+                    else if (u.type == "armour")
+                    {
+                        dArm++;
+                        defenseArmLabel.Text = Convert.ToString(dArm);
+                    }
+                    else if (u.type == "fighter")
+                    {
+                        dFig++;
+                        defenseFigLabel.Text = Convert.ToString(dFig);
+                    }
+                    else if (u.type == "bomber")
+                    {
+                        dBom++;
+                        defenseBomLabel.Text = Convert.ToString(dBom);
+                    }
+                }
+            }
+             
+            defenseLabel.Text = Game.world[Game.counter].owner;
         }
 
         private void attackButton_Click(object sender, EventArgs e)
@@ -71,8 +136,70 @@ namespace Axis_and_Allies
                     }
                 }
             }
-            
-        }
+            foreach (Unit u in Game.world[Game.counter].garrison)
+            {
+                if (u.owner != Game.world[Game.counter].owner)
+                {
+                   
+                    if (u.type == "infantry")
+                    {
+                        aInf++;
+                        attackInfLabel.Text = Convert.ToString(aInf);
+                    }
+                    else if (u.type == "artillery")
+                    {
+                        aArt++;
+                        atttackArtLabel.Text = Convert.ToString(aArt);
+                    }
+                    else if (u.type == "armour")
+                    {
+                        aArm++;
+                        attackArmLabel.Text = Convert.ToString(aArm);
+                    }
+                    else if (u.type == "fighter")
+                    {
+                        aFig++;
+                        attackFigLabel.Text = Convert.ToString(aFig);
+                    }
+                    else if (u.type == "bomber")
+                    {
+                        aBom++;
+                        attackBomLabel.Text = Convert.ToString(aBom);
+                    }
+                }
+                else
+                {
+                    if (u.type == "infantry")
+                    {
+                        dInf++;
+                        defenseInfLabel.Text = Convert.ToString(dInf);
+                    }
+                    else if (u.type == "artillery")
+                    {
+                        dArt++;
+                        defenseArtLabel.Text = Convert.ToString(dArt);
+                    }
+                    else if (u.type == "armour")
+                    {
+                        dArm++;
+                        defenseArmLabel.Text = Convert.ToString(dArm);
+                    }
+                    else if (u.type == "fighter")
+                    {
+                        dFig++;
+                        defenseFigLabel.Text = Convert.ToString(dFig);
+                    }
+                    else if (u.type == "bomber")
+                    {
+                        dBom++;
+                        defenseBomLabel.Text = Convert.ToString(dBom);
+                    }
+                }
+            }
+
+           
+        
+    }
 
         private void retreatButton_Click(object sender, EventArgs e)
         {

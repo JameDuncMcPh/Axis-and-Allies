@@ -30,6 +30,18 @@
         {
             this.attackButton = new System.Windows.Forms.Button();
             this.retreatButton = new System.Windows.Forms.Button();
+            this.attackInfLabel = new System.Windows.Forms.Label();
+            this.defenseInfLabel = new System.Windows.Forms.Label();
+            this.defenseArtLabel = new System.Windows.Forms.Label();
+            this.atttackArtLabel = new System.Windows.Forms.Label();
+            this.defenseArmLabel = new System.Windows.Forms.Label();
+            this.attackArmLabel = new System.Windows.Forms.Label();
+            this.defenseFigLabel = new System.Windows.Forms.Label();
+            this.attackFigLabel = new System.Windows.Forms.Label();
+            this.defenseBomLabel = new System.Windows.Forms.Label();
+            this.attackBomLabel = new System.Windows.Forms.Label();
+            this.attackerLabel = new System.Windows.Forms.Label();
+            this.defenseLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // attackButton
@@ -52,16 +64,137 @@
             this.retreatButton.UseVisualStyleBackColor = true;
             this.retreatButton.Click += new System.EventHandler(this.retreatButton_Click);
             // 
+            // attackInfLabel
+            // 
+            this.attackInfLabel.AutoSize = true;
+            this.attackInfLabel.Location = new System.Drawing.Point(118, 188);
+            this.attackInfLabel.Name = "attackInfLabel";
+            this.attackInfLabel.Size = new System.Drawing.Size(10, 13);
+            this.attackInfLabel.TabIndex = 2;
+            this.attackInfLabel.Text = " ";
+            // 
+            // defenseInfLabel
+            // 
+            this.defenseInfLabel.AutoSize = true;
+            this.defenseInfLabel.Location = new System.Drawing.Point(118, 337);
+            this.defenseInfLabel.Name = "defenseInfLabel";
+            this.defenseInfLabel.Size = new System.Drawing.Size(10, 13);
+            this.defenseInfLabel.TabIndex = 3;
+            this.defenseInfLabel.Text = " ";
+            // 
+            // defenseArtLabel
+            // 
+            this.defenseArtLabel.AutoSize = true;
+            this.defenseArtLabel.Location = new System.Drawing.Point(180, 337);
+            this.defenseArtLabel.Name = "defenseArtLabel";
+            this.defenseArtLabel.Size = new System.Drawing.Size(10, 13);
+            this.defenseArtLabel.TabIndex = 5;
+            this.defenseArtLabel.Text = " ";
+            // 
+            // atttackArtLabel
+            // 
+            this.atttackArtLabel.AutoSize = true;
+            this.atttackArtLabel.Location = new System.Drawing.Point(180, 188);
+            this.atttackArtLabel.Name = "atttackArtLabel";
+            this.atttackArtLabel.Size = new System.Drawing.Size(10, 13);
+            this.atttackArtLabel.TabIndex = 4;
+            this.atttackArtLabel.Text = " ";
+            // 
+            // defenseArmLabel
+            // 
+            this.defenseArmLabel.AutoSize = true;
+            this.defenseArmLabel.Location = new System.Drawing.Point(245, 337);
+            this.defenseArmLabel.Name = "defenseArmLabel";
+            this.defenseArmLabel.Size = new System.Drawing.Size(10, 13);
+            this.defenseArmLabel.TabIndex = 7;
+            this.defenseArmLabel.Text = " ";
+            // 
+            // attackArmLabel
+            // 
+            this.attackArmLabel.AutoSize = true;
+            this.attackArmLabel.Location = new System.Drawing.Point(245, 188);
+            this.attackArmLabel.Name = "attackArmLabel";
+            this.attackArmLabel.Size = new System.Drawing.Size(10, 13);
+            this.attackArmLabel.TabIndex = 6;
+            this.attackArmLabel.Text = " ";
+            // 
+            // defenseFigLabel
+            // 
+            this.defenseFigLabel.AutoSize = true;
+            this.defenseFigLabel.Location = new System.Drawing.Point(300, 337);
+            this.defenseFigLabel.Name = "defenseFigLabel";
+            this.defenseFigLabel.Size = new System.Drawing.Size(10, 13);
+            this.defenseFigLabel.TabIndex = 9;
+            this.defenseFigLabel.Text = " ";
+            // 
+            // attackFigLabel
+            // 
+            this.attackFigLabel.AutoSize = true;
+            this.attackFigLabel.Location = new System.Drawing.Point(300, 188);
+            this.attackFigLabel.Name = "attackFigLabel";
+            this.attackFigLabel.Size = new System.Drawing.Size(10, 13);
+            this.attackFigLabel.TabIndex = 8;
+            this.attackFigLabel.Text = " ";
+            // 
+            // defenseBomLabel
+            // 
+            this.defenseBomLabel.AutoSize = true;
+            this.defenseBomLabel.Location = new System.Drawing.Point(362, 337);
+            this.defenseBomLabel.Name = "defenseBomLabel";
+            this.defenseBomLabel.Size = new System.Drawing.Size(10, 13);
+            this.defenseBomLabel.TabIndex = 11;
+            this.defenseBomLabel.Text = " ";
+            // 
+            // attackBomLabel
+            // 
+            this.attackBomLabel.AutoSize = true;
+            this.attackBomLabel.Location = new System.Drawing.Point(362, 188);
+            this.attackBomLabel.Name = "attackBomLabel";
+            this.attackBomLabel.Size = new System.Drawing.Size(10, 13);
+            this.attackBomLabel.TabIndex = 10;
+            this.attackBomLabel.Text = " ";
+            // 
+            // attackerLabel
+            // 
+            this.attackerLabel.AutoSize = true;
+            this.attackerLabel.Location = new System.Drawing.Point(38, 188);
+            this.attackerLabel.Name = "attackerLabel";
+            this.attackerLabel.Size = new System.Drawing.Size(41, 13);
+            this.attackerLabel.TabIndex = 12;
+            this.attackerLabel.Text = "label11";
+            // 
+            // defenseLabel
+            // 
+            this.defenseLabel.AutoSize = true;
+            this.defenseLabel.Location = new System.Drawing.Point(38, 337);
+            this.defenseLabel.Name = "defenseLabel";
+            this.defenseLabel.Size = new System.Drawing.Size(41, 13);
+            this.defenseLabel.TabIndex = 13;
+            this.defenseLabel.Text = "label12";
+            // 
             // Battle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.defenseLabel);
+            this.Controls.Add(this.attackerLabel);
+            this.Controls.Add(this.defenseBomLabel);
+            this.Controls.Add(this.attackBomLabel);
+            this.Controls.Add(this.defenseFigLabel);
+            this.Controls.Add(this.attackFigLabel);
+            this.Controls.Add(this.defenseArmLabel);
+            this.Controls.Add(this.attackArmLabel);
+            this.Controls.Add(this.defenseArtLabel);
+            this.Controls.Add(this.atttackArtLabel);
+            this.Controls.Add(this.defenseInfLabel);
+            this.Controls.Add(this.attackInfLabel);
             this.Controls.Add(this.retreatButton);
             this.Controls.Add(this.attackButton);
             this.Name = "Battle";
             this.Size = new System.Drawing.Size(500, 500);
             this.Load += new System.EventHandler(this.Battle_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -69,5 +202,17 @@
 
         private System.Windows.Forms.Button attackButton;
         private System.Windows.Forms.Button retreatButton;
+        private System.Windows.Forms.Label attackInfLabel;
+        private System.Windows.Forms.Label defenseInfLabel;
+        private System.Windows.Forms.Label defenseArtLabel;
+        private System.Windows.Forms.Label atttackArtLabel;
+        private System.Windows.Forms.Label defenseArmLabel;
+        private System.Windows.Forms.Label attackArmLabel;
+        private System.Windows.Forms.Label defenseFigLabel;
+        private System.Windows.Forms.Label attackFigLabel;
+        private System.Windows.Forms.Label defenseBomLabel;
+        private System.Windows.Forms.Label attackBomLabel;
+        private System.Windows.Forms.Label attackerLabel;
+        private System.Windows.Forms.Label defenseLabel;
     }
 }

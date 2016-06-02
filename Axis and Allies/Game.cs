@@ -36,7 +36,7 @@ namespace Axis_and_Allies
         {
             InitializeComponent();
 
-           
+
 
             switch (Menu.nation)
             {
@@ -85,13 +85,13 @@ namespace Axis_and_Allies
 
             #endregion
 
-            world = new Province[] { Germany, Western_Europe,  Southern_Europe, Balkans, Eatern_Europe };
+            world = new Province[] { Germany, Western_Europe, Southern_Europe, Balkans, Eatern_Europe };
 
             Set_up();
 
             phaseLabel.Text = "Movement";
             phase = 1;
-        }      
+        }
 
         private void Set_up()
         {
@@ -125,11 +125,16 @@ namespace Axis_and_Allies
                                 amount = 0;
                             }
 
+                            if (greatgrandchild.Name == "owner")
+                            {
+                                world[counter].owner = greatgrandchild.InnerText;
+                            }
+
                             if (greatgrandchild.Name == "infantry")
                             {
                                 for (int i = 0; i < amount; i++)
                                 {
-                                    Unit inf = new Unit("infantry", "Germany", world[counter].name);
+                                    Unit inf = new Unit("infantry", world[counter].owner, world[counter].name);
                                     world[counter].garrison.Add(inf);
                                 }
                             }
@@ -137,7 +142,7 @@ namespace Axis_and_Allies
                             {
                                 for (int i = 0; i < amount; i++)
                                 {
-                                    Unit art = new Unit("artillery", "Germany", world[counter].name);
+                                    Unit art = new Unit("artillery", world[counter].owner, world[counter].name);
                                     world[counter].garrison.Add(art);
                                 }
                             }
@@ -145,7 +150,7 @@ namespace Axis_and_Allies
                             {
                                 for (int i = 0; i < amount; i++)
                                 {
-                                    Unit arm = new Unit("armour", "Germany", world[counter].name);
+                                    Unit arm = new Unit("armour", world[counter].owner, world[counter].name);
                                     world[counter].garrison.Add(arm);
                                 }
                             }
@@ -153,7 +158,7 @@ namespace Axis_and_Allies
                             {
                                 for (int i = 0; i < amount; i++)
                                 {
-                                    Unit fig = new Unit("fighter", "Germany", world[counter].name);                                    
+                                    Unit fig = new Unit("fighter", world[counter].owner, world[counter].name);
                                     world[counter].garrison.Add(fig);
                                 }
                             }
@@ -161,7 +166,7 @@ namespace Axis_and_Allies
                             {
                                 for (int i = 0; i < amount; i++)
                                 {
-                                    Unit bom = new Unit("bomber", "Germany", world[counter].name);
+                                    Unit bom = new Unit("bomber", world[counter].owner, world[counter].name);
                                     world[counter].garrison.Add(bom);
                                 }
                             }
@@ -180,21 +185,18 @@ namespace Axis_and_Allies
                                     }
                                 }
                             }
-                            else if (greatgrandchild.Name == "owner")
-                            {
-                                world[counter].owner = greatgrandchild.InnerText;    
-                            }
+                            
                             else if (greatgrandchild.Name == "IC")
                             {
                                 if (greatgrandchild.InnerText == "YES")
                                 {
                                     world[counter].factory = "yes";
-                                    
+
                                 }
                                 else
                                 {
-                                   world[counter].factory = "no";
-                                    
+                                    world[counter].factory = "no";
+
                                 }
                             }
                         }
@@ -496,7 +498,137 @@ namespace Axis_and_Allies
 
         private void westernEuropeButton_Click(object sender, EventArgs e)
         {
+            counter = 1;
+            garrisonBox.Items.Clear();
+            garrisonBox2.Items.Clear();
+            dropDown.Items.Clear();
 
+
+            provinceLabel.Text = world[counter].name;
+            garrisonBox.Text = "";
+
+            foreach (Unit u in world[counter].garrison)
+            {
+                switch (u.type)
+                {
+                    case "infantry":
+                        garrisonBox.Items.Add("inf");
+                        break;
+
+                    case "artillery":
+                        garrisonBox.Items.Add("art");
+                        break;
+
+                    case "armour":
+                        garrisonBox.Items.Add("arm");
+                        break;
+
+                    case "fighter":
+                        garrisonBox.Items.Add("fig");
+                        break;
+
+                    case "bomber":
+                        garrisonBox.Items.Add("bom");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (string s in world[counter].landConnection)
+            {
+                dropDown.Items.Add(s);
+            }
+        }
+
+        private void easternEurope_Click(object sender, EventArgs e)
+        {
+            counter = 3;
+            garrisonBox.Items.Clear();
+            garrisonBox2.Items.Clear();
+            dropDown.Items.Clear();
+
+
+            provinceLabel.Text = world[counter].name;
+            garrisonBox.Text = "";
+
+            foreach (Unit u in world[counter].garrison)
+            {
+                switch (u.type)
+                {
+                    case "infantry":
+                        garrisonBox.Items.Add("inf");
+                        break;
+
+                    case "artillery":
+                        garrisonBox.Items.Add("art");
+                        break;
+
+                    case "armour":
+                        garrisonBox.Items.Add("arm");
+                        break;
+
+                    case "fighter":
+                        garrisonBox.Items.Add("fig");
+                        break;
+
+                    case "bomber":
+                        garrisonBox.Items.Add("bom");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (string s in world[counter].landConnection)
+            {
+                dropDown.Items.Add(s);
+            }
+        }
+
+        private void southernEurope_Click(object sender, EventArgs e)
+        {
+            counter = 2;
+            garrisonBox.Items.Clear();
+            garrisonBox2.Items.Clear();
+            dropDown.Items.Clear();
+
+
+            provinceLabel.Text = world[counter].name;
+            garrisonBox.Text = "";
+
+            foreach (Unit u in world[counter].garrison)
+            {
+                switch (u.type)
+                {
+                    case "infantry":
+                        garrisonBox.Items.Add("inf");
+                        break;
+
+                    case "artillery":
+                        garrisonBox.Items.Add("art");
+                        break;
+
+                    case "armour":
+                        garrisonBox.Items.Add("arm");
+                        break;
+
+                    case "fighter":
+                        garrisonBox.Items.Add("fig");
+                        break;
+
+                    case "bomber":
+                        garrisonBox.Items.Add("bom");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (string s in world[counter].landConnection)
+            {
+                dropDown.Items.Add(s);
+            }
         }
     }
 }
