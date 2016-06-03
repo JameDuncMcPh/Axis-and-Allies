@@ -250,10 +250,13 @@ namespace Axis_and_Allies
                                 Battle b = new Battle();
                                 f.Controls.Add(b);
                                 b.BringToFront();
+                                break;
                             }
                         }
-
-                        counter++;
+                        if (counter < 5)
+                        {
+                            counter++;
+                        }
                     }
 
                     break;
@@ -339,71 +342,77 @@ namespace Axis_and_Allies
 
         private void movingButton2_Click(object sender, EventArgs e)
         {
-            if (world[secondCounter].garrison[garrisonBox2.SelectedIndex].move > 0)
+            try
             {
-                world[secondCounter].garrison[garrisonBox2.SelectedIndex].move--;
-                world[secondCounter].garrison[garrisonBox2.SelectedIndex].province = world[counter].name;
-
-                world[counter].garrison.Add(world[secondCounter].garrison[garrisonBox2.SelectedIndex]);
-                world[secondCounter].garrison.RemoveAt(garrisonBox2.SelectedIndex);
-
-                garrisonBox.Items.Clear();
-                garrisonBox2.Items.Clear();
-
-                foreach (Unit u in world[counter].garrison)
+                if (world[secondCounter].garrison[garrisonBox2.SelectedIndex].move > 0)
                 {
-                    switch (u.type)
+                    world[secondCounter].garrison[garrisonBox2.SelectedIndex].move--;
+                    world[secondCounter].garrison[garrisonBox2.SelectedIndex].province = world[counter].name;
+
+                    world[counter].garrison.Add(world[secondCounter].garrison[garrisonBox2.SelectedIndex]);
+                    world[secondCounter].garrison.RemoveAt(garrisonBox2.SelectedIndex);
+
+                    garrisonBox.Items.Clear();
+                    garrisonBox2.Items.Clear();
+
+                    foreach (Unit u in world[counter].garrison)
                     {
-                        case "infantry":
-                            garrisonBox.Items.Add("inf");
-                            break;
+                        switch (u.type)
+                        {
+                            case "infantry":
+                                garrisonBox.Items.Add("inf");
+                                break;
 
-                        case "artillery":
-                            garrisonBox.Items.Add("art");
-                            break;
+                            case "artillery":
+                                garrisonBox.Items.Add("art");
+                                break;
 
-                        case "armour":
-                            garrisonBox.Items.Add("arm");
-                            break;
+                            case "armour":
+                                garrisonBox.Items.Add("arm");
+                                break;
 
-                        case "fighter":
-                            garrisonBox.Items.Add("fig");
-                            break;
+                            case "fighter":
+                                garrisonBox.Items.Add("fig");
+                                break;
 
-                        case "bomber":
-                            garrisonBox.Items.Add("bom");
-                            break;
-                        default:
-                            break;
+                            case "bomber":
+                                garrisonBox.Items.Add("bom");
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    foreach (Unit u in world[secondCounter].garrison)
+                    {
+                        switch (u.type)
+                        {
+                            case "infantry":
+                                garrisonBox2.Items.Add("inf");
+                                break;
+
+                            case "artillery":
+                                garrisonBox2.Items.Add("art");
+                                break;
+
+                            case "armour":
+                                garrisonBox2.Items.Add("arm");
+                                break;
+
+                            case "fighter":
+                                garrisonBox2.Items.Add("fig");
+                                break;
+
+                            case "bomber":
+                                garrisonBox2.Items.Add("bom");
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
-                foreach (Unit u in world[secondCounter].garrison)
-                {
-                    switch (u.type)
-                    {
-                        case "infantry":
-                            garrisonBox2.Items.Add("inf");
-                            break;
-
-                        case "artillery":
-                            garrisonBox2.Items.Add("art");
-                            break;
-
-                        case "armour":
-                            garrisonBox2.Items.Add("arm");
-                            break;
-
-                        case "fighter":
-                            garrisonBox2.Items.Add("fig");
-                            break;
-
-                        case "bomber":
-                            garrisonBox2.Items.Add("bom");
-                            break;
-                        default:
-                            break;
-                    }
-                }
+            }
+            catch
+            {
             }
         }
 

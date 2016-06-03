@@ -14,7 +14,7 @@ namespace Axis_and_Allies
     {
 
         Random random = new Random();
-        int attakHits, defenseHits, aInf, aArt, aArm, aFig, aBom, dInf, dArt, dArm, dFig, dBom;
+        int attakHits, defenseHits, aInf, aArt, aArm, aFig, aBom, dInf, dArt, dArm, dFig, dBom, counter;
          
         public Battle()
         {
@@ -25,13 +25,14 @@ namespace Axis_and_Allies
 
         private void Battle_Load(object sender, EventArgs e)
         {
+            counter = Game.counter;
             aInf = aArt = aArm = aFig = aBom = dInf = dArt = dArm = dFig = dBom = 0;
 
             this.Focus();
 
-            foreach (Unit u in Game.world[Game.counter].garrison)
+            foreach (Unit u in Game.world[counter].garrison)
             {
-                if (u.owner != Game.world[Game.counter].owner)
+                if (u.owner != Game.world[counter].owner)
                 {
                     attackerLabel.Text = u.owner;
 
@@ -91,14 +92,14 @@ namespace Axis_and_Allies
                 }
             }
              
-            defenseLabel.Text = Game.world[Game.counter].owner;
+            defenseLabel.Text = Game.world[counter].owner;
         }
 
         private void attackButton_Click(object sender, EventArgs e)
         {
-            foreach (Unit u in Game.world[Game.counter].garrison)
+            foreach (Unit u in Game.world[counter].garrison)
             {
-                if (u.owner != Game.world[Game.counter].name)
+                if (u.owner != Game.world[counter].owner)
                 {
                     if (random.Next(1, 7) <= u.attack)
                     {
@@ -116,29 +117,32 @@ namespace Axis_and_Allies
 
             for (int i = 0; i < attakHits; i ++)
             {
-                foreach (Unit u in Game.world[Game.counter].garrison)
+                foreach (Unit u in Game.world[counter].garrison)
                 {
-                    if (u.owner == Game.world[Game.counter].name)
+                    if (u.owner == Game.world[counter].owner)
                     {
-                        Game.world[Game.counter].garrison.Remove(u);
+                        Game.world[counter].garrison.Remove(u);
                         break;
                     }
                 }
             }
             for (int i = 0; i < defenseHits; i++)
             {
-                foreach (Unit u in Game.world[Game.counter].garrison)
+                foreach (Unit u in Game.world[counter].garrison)
                 {
-                    if (u.owner != Game.world[Game.counter].name)
+                    if (u.owner != Game.world[counter].owner)
                     {
-                        Game.world[Game.counter].garrison.Remove(u);
+                        Game.world[counter].garrison.Remove(u);
                         break;
                     }
                 }
             }
-            foreach (Unit u in Game.world[Game.counter].garrison)
+
+            aInf = aArt = aArm = aFig = aBom = dInf = dArt = dArm = dFig = dBom = 0;
+
+            foreach (Unit u in Game.world[counter].garrison)
             {
-                if (u.owner != Game.world[Game.counter].owner)
+                if (u.owner != Game.world[counter].owner)
                 {
                    
                     if (u.type == "infantry")
