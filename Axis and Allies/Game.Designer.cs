@@ -135,7 +135,7 @@
             // dropDown
             // 
             this.dropDown.FormattingEnabled = true;
-            this.dropDown.Location = new System.Drawing.Point(378, 314);
+            this.dropDown.Location = new System.Drawing.Point(393, 314);
             this.dropDown.Name = "dropDown";
             this.dropDown.Size = new System.Drawing.Size(80, 21);
             this.dropDown.TabIndex = 11;

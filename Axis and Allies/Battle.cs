@@ -14,7 +14,7 @@ namespace Axis_and_Allies
     {
 
         Random random = new Random();
-        int attakHits, defenseHits, aInf, aArt, aArm, aFig, aBom, dInf, dArt, dArm, dFig, dBom, counter;
+        int attakHits, defenseHits, aInf, aArt, aArm, aFig, aBom, dInf, dArt, dArm, dFig, dBom, counter, check, secondcheck;
          
         public Battle()
         {
@@ -26,7 +26,7 @@ namespace Axis_and_Allies
         private void Battle_Load(object sender, EventArgs e)
         {
             counter = Game.counter;
-            aInf = aArt = aArm = aFig = aBom = dInf = dArt = dArm = dFig = dBom = 0;
+            aInf = aArt = aArm = aFig = aBom = dInf = dArt = dArm = dFig = dBom = check = 0;
 
             this.Focus();
 
@@ -97,6 +97,8 @@ namespace Axis_and_Allies
 
         private void attackButton_Click(object sender, EventArgs e)
         {
+            check = secondcheck = 0;
+
             foreach (Unit u in Game.world[counter].garrison)
             {
                 if (u.owner != Game.world[counter].owner)
@@ -136,6 +138,35 @@ namespace Axis_and_Allies
                         break;
                     }
                 }
+            }
+
+            foreach (Unit u in Game.world[counter].garrison)
+            {
+                if (u.owner == Game.world[counter].owner)
+                {
+                    secondcheck++;     
+                }
+                else
+                {
+                    check++;
+                }
+            }
+
+            if (secondcheck == 0)
+            {
+                if (Game.world[counter].garrison.Count() > 0)
+                {
+                    Game.world[counter].owner = Game.world[counter].garrison[0].owner;
+                }
+                Form f = this.FindForm();
+                f.Controls.Remove(this);
+                Game.lb.Refresh();
+            }
+            else if (check == 0)
+            {
+                Form f = this.FindForm();
+                f.Controls.Remove(this);
+                Game.lb.Refresh();
             }
 
             aInf = aArt = aArm = aFig = aBom = dInf = dArt = dArm = dFig = dBom = 0;
