@@ -60,57 +60,21 @@ namespace Axis_and_Allies
 
                     
                 }
-                else if (sender.Equals(LoadButton))
-                {
-                    nation = "UK";
-                    // f is the form that this control is on - ("this" is the current User Control)
-                    Form f = this.FindForm();
-                    f.Controls.Remove(this);
-
-                    //if there is a wrong press then game over
-                    Game g = new Game();
-                    f.Controls.Add(g);
-
-                    
-                }
-                else if (sender.Equals(button4))
-                {
-                    nation = "Japan";
-                    // f is the form that this control is on - ("this" is the current User Control)
-                    Form f = this.FindForm();
-                    f.Controls.Remove(this);
-
-                    //if there is a wrong press then game over
-                    Game g = new Game();
-                    f.Controls.Add(g);
-
-                    
-                }
-                else if (sender.Equals(quitButton))
-                {
-                    nation = "USA";
-                    // f is the form that this control is on - ("this" is the current User Control)
-                    Form f = this.FindForm();
-                    f.Controls.Remove(this);
-
-                    //if there is a wrong press then game over
-                    Game g = new Game();
-                    f.Controls.Add(g);
-
-                    
-                }
+                
             }
 
             if (sender.Equals(gameButton) && newGame == false)
             {
                 button2.Visible = true;
-                button4.Visible = true;
+                //button4.Visible = true;
+                LoadButton.Visible = false;
+                quitButton.Visible = false;
 
                 gameButton.Text = "U.S.S.R.";
                 button2.Text = "Germany";
-                LoadButton.Text = "U.K.";
-                button4.Text = "Japan";
-                quitButton.Text = "U.S.A.";
+                LoadButton.Text = "";
+                button4.Text = "";
+                quitButton.Text = "";
 
                 newGame = true;
             }

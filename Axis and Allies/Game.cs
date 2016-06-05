@@ -36,8 +36,6 @@ namespace Axis_and_Allies
         {
             InitializeComponent();
 
-
-
             switch (Menu.nation)
             {
                 case "USSR":
@@ -45,18 +43,6 @@ namespace Axis_and_Allies
                     break;
 
                 case "Germany":
-                    income = 12;
-                    break;
-
-                case "UK":
-                    income = 12;
-                    break;
-
-                case "Japan":
-                    income = 9;
-                    break;
-
-                case "USA":
                     income = 12;
                     break;
 
@@ -82,15 +68,22 @@ namespace Axis_and_Allies
             Province Southern_Europe = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
             Province Balkans = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
             Province Eatern_Europe = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
-
+            Province Ukraine = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Belorussia = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Archangel = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Karelia = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Caucasus = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province Russia = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
+            Province WesternRussia = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
             #endregion
 
-            world = new Province[] { Germany, Western_Europe, Southern_Europe, Balkans, Eatern_Europe };
+            world = new Province[] { Germany, Western_Europe, Southern_Europe, Balkans, Eatern_Europe, Ukraine, Belorussia, Archangel, Karelia, Caucasus ,Russia ,WesternRussia };
 
             Set_up();
 
             phaseLabel.Text = "Movement";
             phase = 1;
+            incomeLabel.Text = Convert.ToString(income);
         }
 
         private void Set_up()
@@ -206,6 +199,27 @@ namespace Axis_and_Allies
             }
         }
 
+        private void buyButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                typeLabel.Text = "Type:";
+
+                if (Menu.nation == "Germany")
+                {
+                    Unit u = new Unit(Convert.ToString(buyBox.Text), "Germany", "Germany");
+                }
+                else
+                {
+                    Unit u = new Unit(Convert.ToString(buyBox.Text), "USSR", "Russia");
+                }
+            }
+            catch
+            {
+                typeLabel.Text = "Error";
+            }
+        }
+
         private void Game_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(Properties.Resources.map, 0, 0, 500, 300);
@@ -239,6 +253,14 @@ namespace Axis_and_Allies
                 case 1:
                     phase = 2;
                     counter = 0;
+
+                    foreach (Province p in world)
+                    {
+                        if (p.owner == Menu.nation)
+                        {
+                            income++;
+                        }
+                    }
 
                     foreach (Province p in world)
                     {

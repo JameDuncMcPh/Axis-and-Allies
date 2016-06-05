@@ -40,6 +40,18 @@
             this.dropDown = new System.Windows.Forms.ComboBox();
             this.southernEurope = new System.Windows.Forms.Button();
             this.easternEurope = new System.Windows.Forms.Button();
+            this.buyButton = new System.Windows.Forms.Button();
+            this.buyBox = new System.Windows.Forms.TextBox();
+            this.typeLabel = new System.Windows.Forms.Label();
+            this.incomeLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // phaseLabel
@@ -66,7 +78,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(99, 312);
+            this.button2.Location = new System.Drawing.Point(99, 317);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -168,11 +180,162 @@
             this.easternEurope.UseVisualStyleBackColor = true;
             this.easternEurope.Click += new System.EventHandler(this.easternEurope_Click);
             // 
+            // buyButton
+            // 
+            this.buyButton.Location = new System.Drawing.Point(180, 433);
+            this.buyButton.Name = "buyButton";
+            this.buyButton.Size = new System.Drawing.Size(75, 23);
+            this.buyButton.TabIndex = 14;
+            this.buyButton.Text = "Buy";
+            this.buyButton.UseVisualStyleBackColor = true;
+            this.buyButton.Click += new System.EventHandler(this.buyButton_Click);
+            // 
+            // buyBox
+            // 
+            this.buyBox.Location = new System.Drawing.Point(180, 407);
+            this.buyBox.Name = "buyBox";
+            this.buyBox.Size = new System.Drawing.Size(75, 20);
+            this.buyBox.TabIndex = 15;
+            // 
+            // typeLabel
+            // 
+            this.typeLabel.AutoSize = true;
+            this.typeLabel.Location = new System.Drawing.Point(140, 414);
+            this.typeLabel.Name = "typeLabel";
+            this.typeLabel.Size = new System.Drawing.Size(34, 13);
+            this.typeLabel.TabIndex = 16;
+            this.typeLabel.Text = "Type:";
+            // 
+            // incomeLabel
+            // 
+            this.incomeLabel.AutoSize = true;
+            this.incomeLabel.Location = new System.Drawing.Point(25, 414);
+            this.incomeLabel.Name = "incomeLabel";
+            this.incomeLabel.Size = new System.Drawing.Size(13, 13);
+            this.incomeLabel.TabIndex = 17;
+            this.incomeLabel.Text = "0";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.Transparent;
+            this.button1.Location = new System.Drawing.Point(266, 164);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(44, 73);
+            this.button1.TabIndex = 18;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.Transparent;
+            this.button3.Location = new System.Drawing.Point(353, 136);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(52, 101);
+            this.button3.TabIndex = 19;
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.Color.Transparent;
+            this.button4.Location = new System.Drawing.Point(353, 73);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(52, 57);
+            this.button4.TabIndex = 20;
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.Transparent;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.ForeColor = System.Drawing.Color.Transparent;
+            this.button5.Location = new System.Drawing.Point(284, 28);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(74, 39);
+            this.button5.TabIndex = 21;
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.Transparent;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.Color.Transparent;
+            this.button6.Location = new System.Drawing.Point(313, 73);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(38, 44);
+            this.button6.TabIndex = 22;
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.Color.Transparent;
+            this.button7.Location = new System.Drawing.Point(316, 136);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(35, 73);
+            this.button7.TabIndex = 23;
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ForeColor = System.Drawing.Color.Transparent;
+            this.button8.Location = new System.Drawing.Point(357, 3);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(48, 64);
+            this.button8.TabIndex = 24;
+            this.button8.UseVisualStyleBackColor = false;
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.Transparent;
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.ForeColor = System.Drawing.Color.Transparent;
+            this.button9.Location = new System.Drawing.Point(411, 35);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(60, 113);
+            this.button9.TabIndex = 25;
+            this.button9.UseVisualStyleBackColor = false;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.incomeLabel);
+            this.Controls.Add(this.typeLabel);
+            this.Controls.Add(this.buyBox);
+            this.Controls.Add(this.buyButton);
             this.Controls.Add(this.southernEurope);
             this.Controls.Add(this.easternEurope);
             this.Controls.Add(this.dropDown);
@@ -208,5 +371,17 @@
         private System.Windows.Forms.ComboBox dropDown;
         private System.Windows.Forms.Button southernEurope;
         private System.Windows.Forms.Button easternEurope;
+        private System.Windows.Forms.Button buyButton;
+        private System.Windows.Forms.TextBox buyBox;
+        private System.Windows.Forms.Label typeLabel;
+        private System.Windows.Forms.Label incomeLabel;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
     }
 }
