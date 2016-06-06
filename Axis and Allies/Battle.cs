@@ -160,13 +160,13 @@ namespace Axis_and_Allies
                 }
                 Form f = this.FindForm();
                 f.Controls.Remove(this);
-                Game.lb.Refresh();
+                
             }
             else if (check == 0)
             {
                 Form f = this.FindForm();
                 f.Controls.Remove(this);
-                Game.lb.Refresh();
+                
             }
 
             aInf = aArt = aArm = aFig = aBom = dInf = dArt = dArm = dFig = dBom = 0;
