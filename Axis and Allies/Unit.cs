@@ -8,7 +8,7 @@ namespace Axis_and_Allies
 {
     public class Unit
     {
-        public int attack, defense, hitpoint, cost, move;
+        public int attack, defense, hitpoint, cost, move, oMove;
 
         public string type, owner, province;
 
@@ -23,6 +23,7 @@ namespace Axis_and_Allies
                     attack = 1;
                     defense = 2;
                     move = 1;
+                    oMove = 1;
                     hitpoint = 1;
                     cost = 1;
 
@@ -33,6 +34,7 @@ namespace Axis_and_Allies
                     attack = 2;
                     defense = 2;
                     move = 1;
+                    oMove = 1;
                     hitpoint = 1;
                     cost = 3;
 
@@ -43,6 +45,7 @@ namespace Axis_and_Allies
                     attack = 3;
                     defense = 3;
                     move = 2;
+                    oMove = 2;
                     hitpoint = 1;
                     cost = 5;
 
@@ -53,6 +56,7 @@ namespace Axis_and_Allies
                     attack = 4;
                     defense = 4;
                     move = 3;
+                    oMove = 3;
                     hitpoint = 1;
                     cost = 10;
 
@@ -63,6 +67,7 @@ namespace Axis_and_Allies
                     attack = 4;
                     defense = 1;
                     move = 6;
+                    oMove = 6;
                     hitpoint = 1;
                     cost = 15;
 
