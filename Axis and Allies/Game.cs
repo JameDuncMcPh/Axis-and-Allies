@@ -406,6 +406,18 @@ namespace Axis_and_Allies
                             if (p.landConnection.Contains(aitarget) && p.garrison.Count() > world[counter].garrison.Count())
                             {
                                 InLine.Add(p.name);
+
+                                foreach (Unit u in p.garrison)
+                                {
+                                    if (u.move > 0)
+                                    {
+                                        u.move--;
+                                        u.province = aitarget;
+
+                                        world[counter].garrison.Add(u);
+                                        p.garrison.Remove(u);
+                                    }
+                                }
                             }
                             else
                             {
@@ -413,7 +425,39 @@ namespace Axis_and_Allies
                                 {
                                     if (p.landConnection.Contains(s))
                                     {
+                                        nextInLine.Add(p.name);
 
+                                        foreach (Unit u in p.garrison)
+                                        {
+                                            if (u.move > 0)
+                                            {
+                                                u.move--;
+                                                u.province = s;
+
+                                                world[counter].garrison.Add(u);
+                                                p.garrison.Remove(u);
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        foreach (string st in nextInLine)
+                                        {
+                                            if (p.landConnection.Contains(st))
+                                            {
+                                                foreach (Unit u in p.garrison)
+                                                {
+                                                    if (u.move > 0)
+                                                    {
+                                                        u.move--;
+                                                        u.province = st;
+
+                                                        world[counter].garrison.Add(u);
+                                                        p.garrison.Remove(u);
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
