@@ -128,6 +128,7 @@
     <None Include="Resources\japan sun.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Map-1.png" />
     <Content Include="Setup.xml">
       <SubType>Designer</SubType>
     </Content>
