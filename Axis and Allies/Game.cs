@@ -233,13 +233,23 @@ namespace Axis_and_Allies
             {
                 typeLabel.Text = "Type:";
 
-                if (Menu.nation == "Germany")
+                Unit u = new Unit(Convert.ToString(buyBox.Text), "Germany", "Germany");
+
+                if (Menu.nation == "Germany" && income > u.cost)
                 {
-                    Unit u = new Unit(Convert.ToString(buyBox.Text), "Germany", "Germany");
+                    world[0].garrison.Add(u);
+                    income -= u.cost;
+
+                    Refresh();
                 }
-                else
+                else if (income > u.cost)
                 {
-                    Unit u = new Unit(Convert.ToString(buyBox.Text), "USSR", "Russia");
+                    u.owner = "USSR";
+                    u.province = "Russia";
+                    world[10].garrison.Add(u);
+                    income -= u.cost;
+
+                    Refresh();
                 }
             }
             catch
