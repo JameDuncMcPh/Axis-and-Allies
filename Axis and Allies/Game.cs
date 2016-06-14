@@ -339,26 +339,45 @@ namespace Axis_and_Allies
                             {
                                 case "Germany":
 
+                                    #region Win
+                                    #endregion
+
                                     break;
-                                case "Balkans":
-                                    if (ussrProvinces.Count() > 9)
+                                
+                                case "Eastern_Europe":
+                                    if (ussrProvinces.Count() > 8)
                                     {
                                         aitarget = "Germany";
                                         counter = 0;
                                     }
                                     break;
-                                case "Eastern_Europe":
-                                    if (ussrProvinces.Count() > 8)
+                                case "Balkans":
+                                    if (ussrProvinces.Count() > 9)
+                                    {
+                                        aitarget = "Eastern_Europe";
+                                        counter = 4;
+                                    }
+                                    break;
+               
+                                case "Ukraine":
+                                    if (ussrProvinces.Count() > 4)
                                     {
                                         aitarget = "Balkans";
+                                        counter = 3;
+                                    }
+                                    break;
+                                  case "Belorussia":
+                                    if (ussrProvinces.Count() > 4)
+                                    {
+                                        aitarget = "Ukraine";
                                         counter = 3;
                                     }
                                     break;
                                 case "Karelia":
                                     if (ussrProvinces.Count() > 7)
                                     {
-                                        aitarget = "Eastern_Europe";
-                                        counter = 4;
+                                        aitarget = "Belorussia";
+                                        counter = 6;
                                     }
                                     break;
                                 case "Archangel":
@@ -375,18 +394,11 @@ namespace Axis_and_Allies
                                         counter = 7;
                                     }
                                     break;
-                                case "Ukraine":
-                                    if (ussrProvinces.Count() > 4)
-                                    {
-                                        aitarget = "WesternRussia";
-                                        counter = 11;
-                                    }
-                                    break;
                                 case "Caucasus":
                                     if (ussrProvinces.Count() > 3)
                                     {
-                                        aitarget = "Ukraine";
-                                        counter = 5;
+                                        aitarget = "WesternRussia";
+                                        counter = 11;
                                     }
                                     break;
                                 case "Russia":
@@ -423,42 +435,42 @@ namespace Axis_and_Allies
                                     if (ussrProvinces.Count() > 9)
                                     {
                                         aitarget = "Russia";
-                                        counter = 0;
+                                        counter = 9;
                                     }
                                     break;
                                 case "WesternRussia":
                                     if (ussrProvinces.Count() > 8)
                                     {
                                         aitarget = "Archangel";
-                                        counter = 3;
+                                        counter = 7;
                                     }
                                     break;
                                 case "Caucasus":
                                     if (ussrProvinces.Count() > 7)
                                     {
                                         aitarget = "WesternRussia";
-                                        counter = 4;
+                                        counter = 11;
                                     }
                                     break;
                                 case "Ukraine":
                                     if (ussrProvinces.Count() > 6)
                                     {
                                         aitarget = "Caucasus";
-                                        counter = 8;
+                                        counter = 10;
                                     }
                                     break;
                                 case "Belorussia":
                                     if (ussrProvinces.Count() > 5)
                                     {
                                         aitarget = "Ukraine";
-                                        counter = 7;
+                                        counter = 5;
                                     }
                                     break;
                                 case "Karelia":
                                     if (ussrProvinces.Count() > 4)
                                     {
                                         aitarget = "Belorussia";
-                                        counter = 11;
+                                        counter = 6;
                                     }
                                     break;
                                 case "Eastern_Europe":
@@ -472,14 +484,14 @@ namespace Axis_and_Allies
                                     if (ussrProvinces.Count() > 3)
                                     {
                                         aitarget = "Eastern_Europe";
-                                        counter = 5;
+                                        counter = 4;
                                     }
                                     break;
                                 case "Germany":
                                     if (ussrProvinces.Count() > 2)
                                     {
                                         aitarget = "Balkans";
-                                        counter = 9;
+                                        counter = 3;
                                     }
                                     break;
                                 default:
