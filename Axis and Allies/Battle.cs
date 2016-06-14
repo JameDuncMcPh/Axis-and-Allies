@@ -238,6 +238,23 @@ namespace Axis_and_Allies
 
         private void retreatButton_Click(object sender, EventArgs e)
         {
+            foreach (Unit u in Game.world[Game.counter].garrison)
+            {
+                if (u.owner != Game.world[Game.counter].owner && u.owner == Menu.nation)
+                {
+                    if (Menu.nation == "Germany")
+                    {
+                        Game.world[0].garrison.Add(u);
+                        Game.world[Game.counter].garrison.Remove(u);
+                    }
+                    else
+                    {
+                        Game.world[10].garrison.Add(u);
+                        Game.world[Game.counter].garrison.Remove(u);
+                    }
+                }
+            }
+
             Form f = this.FindForm();
             f.Controls.Remove(this);
         }

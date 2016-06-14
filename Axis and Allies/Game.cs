@@ -317,6 +317,11 @@ namespace Axis_and_Allies
                         }
                     }
 
+                    
+                    break;
+
+                case 2:
+
                     #region AI turn
 
                     ussrProvinces.Clear();
@@ -343,7 +348,7 @@ namespace Axis_and_Allies
                                     #endregion
 
                                     break;
-                                
+
                                 case "Eastern_Europe":
                                     if (ussrProvinces.Count() > 8)
                                     {
@@ -358,7 +363,7 @@ namespace Axis_and_Allies
                                         counter = 4;
                                     }
                                     break;
-               
+
                                 case "Ukraine":
                                     if (ussrProvinces.Count() > 4)
                                     {
@@ -366,7 +371,7 @@ namespace Axis_and_Allies
                                         counter = 3;
                                     }
                                     break;
-                                  case "Belorussia":
+                                case "Belorussia":
                                     if (ussrProvinces.Count() > 4)
                                     {
                                         aitarget = "Ukraine";
@@ -565,17 +570,54 @@ namespace Axis_and_Allies
                         }
                     }
 
+                    foreach (Province p in world)
+                    {
+                        foreach (Unit u in p.garrison)
+                        {
+                            if (u.owner != p.owner)
+                            {
+                                Form f = this.FindForm();
+                                Battle b = new Battle();
+                                f.Controls.Add(b);
+                                b.BringToFront();
+                                break;
+                            }
+                        }
+
+                        if (counter < 11)
+                        {
+                            counter++;
+                        }
+                    }
+
                     #endregion
 
                     #endregion
-                    break;
-
-                case 2:
                     break;
 
                 default:
                     break;
             }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void movingButton_Click(object sender, EventArgs e)
