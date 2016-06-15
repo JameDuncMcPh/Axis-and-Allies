@@ -25,7 +25,7 @@ namespace Axis_and_Allies
                     move = 1;
                     oMove = 1;
                     hitpoint = 1;
-                    cost = 1;
+                    cost = 3;
 
                     break;
 
@@ -36,11 +36,11 @@ namespace Axis_and_Allies
                     move = 1;
                     oMove = 1;
                     hitpoint = 1;
-                    cost = 3;
+                    cost = 4;
 
                     break;
 
-                case "tank":
+                case "armour":
 
                     attack = 3;
                     defense = 3;

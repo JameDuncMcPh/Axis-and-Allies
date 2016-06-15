@@ -239,6 +239,7 @@ namespace Axis_and_Allies
                 {
                     world[0].garrison.Add(u);
                     income -= u.cost;
+                    incomeLabel.Text = income.ToString();
 
                     Refresh();
                 }
@@ -248,6 +249,7 @@ namespace Axis_and_Allies
                     u.province = "Russia";
                     world[10].garrison.Add(u);
                     income -= u.cost;
+                    incomeLabel.Text = income.ToString();
 
                     Refresh();
                 }
@@ -326,7 +328,6 @@ namespace Axis_and_Allies
                             u.move = u.oMove;
                         }
                     }
-
                     
                     break;
 
@@ -334,6 +335,7 @@ namespace Axis_and_Allies
 
                     #region AI turn
 
+                    #region Target accuriment
                     ussrProvinces.Clear();
                     germanyProvinces.Clear();
 
@@ -515,6 +517,7 @@ namespace Axis_and_Allies
 
                         }
                     }
+                    #endregion
 
                     #region Attack
 
@@ -598,6 +601,19 @@ namespace Axis_and_Allies
                         {
                             counter++;
                         }
+                    }
+
+# endregion
+
+                    #region Purchase
+                    if (Menu.nation == "USSR")
+                    {
+                        if ()
+                        {
+                        }
+                    }
+                    else
+                    {
                     }
 
                     #endregion
