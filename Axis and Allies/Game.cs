@@ -608,12 +608,17 @@ namespace Axis_and_Allies
                     #region Purchase
                     if (Menu.nation == "USSR")
                     {
-                        if ()
+                        if (aiIncome > 3)
                         {
+                            Unit u = new Unit("infantry","USSR","Russia");
                         }
                     }
                     else
                     {
+                        if (aiIncome > 5)
+                        {
+                            Unit u = new Unit("infantry", "Germany", "Germany");
+                        }
                     }
 
                     #endregion
