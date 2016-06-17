@@ -347,8 +347,6 @@ namespace Axis_and_Allies
                             if (p.owner == "USSR")
                             {
                                 ussrProvinces.Add(p);
-
-                                aiIncome++;
                             }
                         }
 
@@ -440,8 +438,6 @@ namespace Axis_and_Allies
                             if (p.owner == "Germany")
                             {
                                 germanyProvinces.Add(p);
-
-                                aiIncome++;
                             }
                         }
 
@@ -522,7 +518,7 @@ namespace Axis_and_Allies
                         }
                     }
                     #endregion
-                    
+
                     #region Attack
 
                     foreach (Province p in ussrProvinces)
@@ -612,36 +608,16 @@ namespace Axis_and_Allies
                     #region Purchase
                     if (Menu.nation == "USSR")
                     {
-                        while (aiIncome > 18)
+                        if (aiIncome > 3)
                         {
-                            Unit i = new Unit("infantry","USSR","Russia");
-                            Unit at = new Unit("artillery", "USSR", "Russia");
-                            Unit ar = new Unit("armour", "USSR", "Russia");
-
-                            world[10].garrison.Add(i);
-                            world[10].garrison.Add(i);
-                            world[10].garrison.Add(i);
-                            world[10].garrison.Add(at);
-                            world[10].garrison.Add(ar);
-
-                            aiIncome -= 18;
+                            Unit u = new Unit("infantry","USSR","Russia");
                         }
                     }
                     else
                     {
-                        while (aiIncome > 18)
+                        if (aiIncome > 5)
                         {
-                            Unit i = new Unit("infantry", "Germany", "Germany");
-                            Unit a = new Unit("infantry", "Germany", "Germany");
-                            Unit t = new Unit("infantry", "Germany", "Germany");
-
-                            world[0].garrison.Add(i);
-                            world[0].garrison.Add(i);
-                            world[0].garrison.Add(i);
-                            world[0].garrison.Add(a);
-                            world[0].garrison.Add(t);
-
-                            aiIncome -= 18; 
+                            Unit u = new Unit("infantry", "Germany", "Germany");
                         }
                     }
 
