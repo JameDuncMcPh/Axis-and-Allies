@@ -631,29 +631,9 @@ namespace Axis_and_Allies
             }
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void movingButton_Click(object sender, EventArgs e)
         {
-            if (world[counter].garrison[garrisonBox.SelectedIndex].move > 0)
+            if (world[counter].garrison[garrisonBox.SelectedIndex].move > 0 && world[counter].garrison[garrisonBox.SelectedIndex].owner == Menu.nation)
             {
                 world[counter].garrison[garrisonBox.SelectedIndex].move--;
                 world[counter].garrison[garrisonBox.SelectedIndex].province = world[secondCounter].name;
@@ -726,7 +706,7 @@ namespace Axis_and_Allies
         {
             try
             {
-                if (world[secondCounter].garrison[garrisonBox2.SelectedIndex].move > 0)
+                if (world[secondCounter].garrison[garrisonBox2.SelectedIndex].move > 0 && world[counter].garrison[garrisonBox.SelectedIndex].owner == Menu.nation)
                 {
                     world[secondCounter].garrison[garrisonBox2.SelectedIndex].move--;
                     world[secondCounter].garrison[garrisonBox2.SelectedIndex].province = world[counter].name;
@@ -797,7 +777,7 @@ namespace Axis_and_Allies
             {
             }
         }
-
+    
         private void dropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             secondCounter = 0;
@@ -839,6 +819,231 @@ namespace Axis_and_Allies
                     break;
                 }
                 secondCounter++;
+            }
+        }
+
+        private void ukraineButton_Click(object sender, EventArgs e)
+        {
+            counter = 5;
+            garrisonBox.Items.Clear();
+            garrisonBox2.Items.Clear();
+            dropDown.Items.Clear();
+
+
+            provinceLabel.Text = world[counter].name;
+            garrisonBox.Text = "";
+
+            foreach (Unit u in world[counter].garrison)
+            {
+                switch (u.type)
+                {
+                    case "infantry":
+                        garrisonBox.Items.Add("inf");
+                        break;
+
+                    case "artillery":
+                        garrisonBox.Items.Add("art");
+                        break;
+
+                    case "armour":
+                        garrisonBox.Items.Add("arm");
+                        break;
+
+                    case "fighter":
+                        garrisonBox.Items.Add("fig");
+                        break;
+
+                    case "bomber":
+                        garrisonBox.Items.Add("bom");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (string s in world[counter].landConnection)
+            {
+                dropDown.Items.Add(s);
+            }
+        }
+
+        private void belorussiaButton_Click(object sender, EventArgs e)
+        {
+            counter = 6;
+            garrisonBox.Items.Clear();
+            garrisonBox2.Items.Clear();
+            dropDown.Items.Clear();
+
+
+            provinceLabel.Text = world[counter].name;
+            garrisonBox.Text = "";
+
+            foreach (Unit u in world[counter].garrison)
+            {
+                switch (u.type)
+                {
+                    case "infantry":
+                        garrisonBox.Items.Add("inf");
+                        break;
+
+                    case "artillery":
+                        garrisonBox.Items.Add("art");
+                        break;
+
+                    case "armour":
+                        garrisonBox.Items.Add("arm");
+                        break;
+
+                    case "fighter":
+                        garrisonBox.Items.Add("fig");
+                        break;
+
+                    case "bomber":
+                        garrisonBox.Items.Add("bom");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (string s in world[counter].landConnection)
+            {
+                dropDown.Items.Add(s);
+            }
+        }
+
+        private void westernrussiaButton_Click(object sender, EventArgs e)
+        {
+            counter = 11;
+            garrisonBox.Items.Clear();
+            garrisonBox2.Items.Clear();
+            dropDown.Items.Clear();
+
+
+            provinceLabel.Text = world[counter].name;
+            garrisonBox.Text = "";
+
+            foreach (Unit u in world[counter].garrison)
+            {
+                switch (u.type)
+                {
+                    case "infantry":
+                        garrisonBox.Items.Add("inf");
+                        break;
+
+                    case "artillery":
+                        garrisonBox.Items.Add("art");
+                        break;
+
+                    case "armour":
+                        garrisonBox.Items.Add("arm");
+                        break;
+
+                    case "fighter":
+                        garrisonBox.Items.Add("fig");
+                        break;
+
+                    case "bomber":
+                        garrisonBox.Items.Add("bom");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (string s in world[counter].landConnection)
+            {
+                dropDown.Items.Add(s);
+            }
+        }
+
+        private void archangelButon_Click(object sender, EventArgs e)
+        {
+            counter = 7;
+            garrisonBox.Items.Clear();
+            garrisonBox2.Items.Clear();
+            dropDown.Items.Clear();
+
+
+            provinceLabel.Text = world[counter].name;
+            garrisonBox.Text = "";
+
+            foreach (Unit u in world[counter].garrison)
+            {
+                switch (u.type)
+                {
+                    case "infantry":
+                        garrisonBox.Items.Add("inf");
+                        break;
+
+                    case "artillery":
+                        garrisonBox.Items.Add("art");
+                        break;
+
+                    case "armour":
+                        garrisonBox.Items.Add("arm");
+                        break;
+
+                    case "fighter":
+                        garrisonBox.Items.Add("fig");
+                        break;
+
+                    case "bomber":
+                        garrisonBox.Items.Add("bom");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (string s in world[counter].landConnection)
+            {
+                dropDown.Items.Add(s);
+            }
+        }
+
+        private void kareliaButton_Click(object sender, EventArgs e)
+        {
+            counter = 8;
+            garrisonBox.Items.Clear();
+            garrisonBox2.Items.Clear();
+            dropDown.Items.Clear();
+
+
+            provinceLabel.Text = world[counter].name;
+            garrisonBox.Text = "";
+
+            foreach (Unit u in world[counter].garrison)
+            {
+                switch (u.type)
+                {
+                    case "infantry":
+                        garrisonBox.Items.Add("inf");
+                        break;
+
+                    case "artillery":
+                        garrisonBox.Items.Add("art");
+                        break;
+
+                    case "armour":
+                        garrisonBox.Items.Add("arm");
+                        break;
+
+                    case "fighter":
+                        garrisonBox.Items.Add("fig");
+                        break;
+
+                    case "bomber":
+                        garrisonBox.Items.Add("bom");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (string s in world[counter].landConnection)
+            {
+                dropDown.Items.Add(s);
             }
         }
 
@@ -934,7 +1139,7 @@ namespace Axis_and_Allies
 
         private void easternEurope_Click(object sender, EventArgs e)
         {
-            counter = 3;
+            counter = 4;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
@@ -1021,5 +1226,141 @@ namespace Axis_and_Allies
                 dropDown.Items.Add(s);
             }
         }
+
+        private void Balkans_Click(object sender, EventArgs e)
+        {
+            counter = 3;
+            garrisonBox.Items.Clear();
+            garrisonBox2.Items.Clear();
+            dropDown.Items.Clear();
+
+
+            provinceLabel.Text = world[counter].name;
+            garrisonBox.Text = "";
+
+            foreach (Unit u in world[counter].garrison)
+            {
+                switch (u.type)
+                {
+                    case "infantry":
+                        garrisonBox.Items.Add("inf");
+                        break;
+
+                    case "artillery":
+                        garrisonBox.Items.Add("art");
+                        break;
+
+                    case "armour":
+                        garrisonBox.Items.Add("arm");
+                        break;
+
+                    case "fighter":
+                        garrisonBox.Items.Add("fig");
+                        break;
+
+                    case "bomber":
+                        garrisonBox.Items.Add("bom");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (string s in world[counter].landConnection)
+            {
+                dropDown.Items.Add(s);
+            }
+        }
+
+        private void russiaButton_Click(object sender, EventArgs e)
+        {
+            counter = 10;
+            garrisonBox.Items.Clear();
+            garrisonBox2.Items.Clear();
+            dropDown.Items.Clear();
+
+
+            provinceLabel.Text = world[counter].name;
+            garrisonBox.Text = "";
+
+            foreach (Unit u in world[counter].garrison)
+            {
+                switch (u.type)
+                {
+                    case "infantry":
+                        garrisonBox.Items.Add("inf");
+                        break;
+
+                    case "artillery":
+                        garrisonBox.Items.Add("art");
+                        break;
+
+                    case "armour":
+                        garrisonBox.Items.Add("arm");
+                        break;
+
+                    case "fighter":
+                        garrisonBox.Items.Add("fig");
+                        break;
+
+                    case "bomber":
+                        garrisonBox.Items.Add("bom");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (string s in world[counter].landConnection)
+            {
+                dropDown.Items.Add(s);
+            }
+        }
+
+        private void caucasusButton_Click(object sender, EventArgs e)
+        {
+            counter = 9;
+            garrisonBox.Items.Clear();
+            garrisonBox2.Items.Clear();
+            dropDown.Items.Clear();
+
+
+            provinceLabel.Text = world[counter].name;
+            garrisonBox.Text = "";
+
+            foreach (Unit u in world[counter].garrison)
+            {
+                switch (u.type)
+                {
+                    case "infantry":
+                        garrisonBox.Items.Add("inf");
+                        break;
+
+                    case "artillery":
+                        garrisonBox.Items.Add("art");
+                        break;
+
+                    case "armour":
+                        garrisonBox.Items.Add("arm");
+                        break;
+
+                    case "fighter":
+                        garrisonBox.Items.Add("fig");
+                        break;
+
+                    case "bomber":
+                        garrisonBox.Items.Add("bom");
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (string s in world[counter].landConnection)
+            {
+                dropDown.Items.Add(s);
+            }
+        }
+
     }
 }

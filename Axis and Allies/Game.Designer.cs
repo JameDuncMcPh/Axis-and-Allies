@@ -44,14 +44,14 @@
             this.buyBox = new System.Windows.Forms.TextBox();
             this.typeLabel = new System.Windows.Forms.Label();
             this.incomeLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.balkansButton = new System.Windows.Forms.Button();
+            this.caucasusButton = new System.Windows.Forms.Button();
+            this.westernrussiaButton = new System.Windows.Forms.Button();
+            this.kareliaButton = new System.Windows.Forms.Button();
+            this.belorussiaButton = new System.Windows.Forms.Button();
+            this.ukraineButton = new System.Windows.Forms.Button();
+            this.archangelButon = new System.Windows.Forms.Button();
+            this.russiaButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // phaseLabel
@@ -65,6 +65,7 @@
             // 
             // germanyButton
             // 
+            this.germanyButton.AccessibleName = "";
             this.germanyButton.FlatAppearance.BorderSize = 0;
             this.germanyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.germanyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -96,6 +97,7 @@
             // 
             // westernEuropeButton
             // 
+            this.westernEuropeButton.AccessibleName = "";
             this.westernEuropeButton.BackColor = System.Drawing.Color.Transparent;
             this.westernEuropeButton.FlatAppearance.BorderSize = 0;
             this.westernEuropeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -155,6 +157,7 @@
             // 
             // southernEurope
             // 
+            this.southernEurope.AccessibleName = "";
             this.southernEurope.BackColor = System.Drawing.Color.Transparent;
             this.southernEurope.FlatAppearance.BorderSize = 0;
             this.southernEurope.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
@@ -169,6 +172,7 @@
             // 
             // easternEurope
             // 
+            this.easternEurope.AccessibleName = "";
             this.easternEurope.FlatAppearance.BorderSize = 0;
             this.easternEurope.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.easternEurope.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -215,127 +219,139 @@
             this.incomeLabel.TabIndex = 17;
             this.incomeLabel.Text = "0";
             // 
-            // button1
+            // balkansButton
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(223, 160);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(44, 73);
-            this.button1.TabIndex = 18;
-            this.button1.UseVisualStyleBackColor = false;
+            this.balkansButton.AccessibleName = "";
+            this.balkansButton.BackColor = System.Drawing.Color.Transparent;
+            this.balkansButton.FlatAppearance.BorderSize = 0;
+            this.balkansButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.balkansButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.balkansButton.ForeColor = System.Drawing.Color.Transparent;
+            this.balkansButton.Location = new System.Drawing.Point(223, 160);
+            this.balkansButton.Name = "balkansButton";
+            this.balkansButton.Size = new System.Drawing.Size(44, 73);
+            this.balkansButton.TabIndex = 18;
+            this.balkansButton.UseVisualStyleBackColor = false;
+            this.balkansButton.Click += new System.EventHandler(this.Balkans_Click);
             // 
-            // button3
+            // caucasusButton
             // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Transparent;
-            this.button3.Location = new System.Drawing.Point(335, 146);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(52, 101);
-            this.button3.TabIndex = 19;
-            this.button3.UseVisualStyleBackColor = false;
+            this.caucasusButton.AccessibleName = "";
+            this.caucasusButton.BackColor = System.Drawing.Color.Transparent;
+            this.caucasusButton.FlatAppearance.BorderSize = 0;
+            this.caucasusButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.caucasusButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.caucasusButton.ForeColor = System.Drawing.Color.Transparent;
+            this.caucasusButton.Location = new System.Drawing.Point(335, 146);
+            this.caucasusButton.Name = "caucasusButton";
+            this.caucasusButton.Size = new System.Drawing.Size(52, 101);
+            this.caucasusButton.TabIndex = 19;
+            this.caucasusButton.UseVisualStyleBackColor = false;
+            this.caucasusButton.Click += new System.EventHandler(this.caucasusButton_Click);
             // 
-            // button4
+            // westernrussiaButton
             // 
-            this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.Color.Transparent;
-            this.button4.Location = new System.Drawing.Point(344, 69);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(52, 57);
-            this.button4.TabIndex = 20;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.westernrussiaButton.AccessibleName = "";
+            this.westernrussiaButton.BackColor = System.Drawing.Color.Transparent;
+            this.westernrussiaButton.FlatAppearance.BorderSize = 0;
+            this.westernrussiaButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.westernrussiaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.westernrussiaButton.ForeColor = System.Drawing.Color.Transparent;
+            this.westernrussiaButton.Location = new System.Drawing.Point(344, 69);
+            this.westernrussiaButton.Name = "westernrussiaButton";
+            this.westernrussiaButton.Size = new System.Drawing.Size(52, 57);
+            this.westernrussiaButton.TabIndex = 20;
+            this.westernrussiaButton.UseVisualStyleBackColor = false;
+            this.westernrussiaButton.Click += new System.EventHandler(this.westernrussiaButton_Click);
             // 
-            // button5
+            // kareliaButton
             // 
-            this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.Transparent;
-            this.button5.Location = new System.Drawing.Point(258, 24);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(74, 39);
-            this.button5.TabIndex = 21;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.kareliaButton.AccessibleName = "";
+            this.kareliaButton.BackColor = System.Drawing.Color.Transparent;
+            this.kareliaButton.FlatAppearance.BorderSize = 0;
+            this.kareliaButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.kareliaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.kareliaButton.ForeColor = System.Drawing.Color.Transparent;
+            this.kareliaButton.Location = new System.Drawing.Point(258, 24);
+            this.kareliaButton.Name = "kareliaButton";
+            this.kareliaButton.Size = new System.Drawing.Size(74, 39);
+            this.kareliaButton.TabIndex = 21;
+            this.kareliaButton.UseVisualStyleBackColor = false;
+            this.kareliaButton.Click += new System.EventHandler(this.kareliaButton_Click);
             // 
-            // button6
+            // belorussiaButton
             // 
-            this.button6.BackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.Color.Transparent;
-            this.button6.Location = new System.Drawing.Point(272, 82);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(38, 44);
-            this.button6.TabIndex = 22;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.belorussiaButton.AccessibleName = "";
+            this.belorussiaButton.BackColor = System.Drawing.Color.Transparent;
+            this.belorussiaButton.FlatAppearance.BorderSize = 0;
+            this.belorussiaButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.belorussiaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.belorussiaButton.ForeColor = System.Drawing.Color.Transparent;
+            this.belorussiaButton.Location = new System.Drawing.Point(272, 82);
+            this.belorussiaButton.Name = "belorussiaButton";
+            this.belorussiaButton.Size = new System.Drawing.Size(38, 44);
+            this.belorussiaButton.TabIndex = 22;
+            this.belorussiaButton.UseVisualStyleBackColor = false;
+            this.belorussiaButton.Click += new System.EventHandler(this.belorussiaButton_Click);
             // 
-            // button7
+            // ukraineButton
             // 
-            this.button7.BackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.ForeColor = System.Drawing.Color.Transparent;
-            this.button7.Location = new System.Drawing.Point(290, 132);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(35, 73);
-            this.button7.TabIndex = 23;
-            this.button7.UseVisualStyleBackColor = false;
+            this.ukraineButton.AccessibleName = "";
+            this.ukraineButton.BackColor = System.Drawing.Color.Transparent;
+            this.ukraineButton.FlatAppearance.BorderSize = 0;
+            this.ukraineButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.ukraineButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ukraineButton.ForeColor = System.Drawing.Color.Transparent;
+            this.ukraineButton.Location = new System.Drawing.Point(290, 132);
+            this.ukraineButton.Name = "ukraineButton";
+            this.ukraineButton.Size = new System.Drawing.Size(35, 73);
+            this.ukraineButton.TabIndex = 23;
+            this.ukraineButton.UseVisualStyleBackColor = false;
+            this.ukraineButton.Click += new System.EventHandler(this.ukraineButton_Click);
             // 
-            // button8
+            // archangelButon
             // 
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.ForeColor = System.Drawing.Color.Transparent;
-            this.button8.Location = new System.Drawing.Point(331, -1);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(48, 64);
-            this.button8.TabIndex = 24;
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.archangelButon.AccessibleName = "";
+            this.archangelButon.BackColor = System.Drawing.Color.Transparent;
+            this.archangelButon.FlatAppearance.BorderSize = 0;
+            this.archangelButon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.archangelButon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.archangelButon.ForeColor = System.Drawing.Color.Transparent;
+            this.archangelButon.Location = new System.Drawing.Point(331, -1);
+            this.archangelButon.Name = "archangelButon";
+            this.archangelButon.Size = new System.Drawing.Size(48, 64);
+            this.archangelButon.TabIndex = 24;
+            this.archangelButon.UseVisualStyleBackColor = false;
+            this.archangelButon.Click += new System.EventHandler(this.archangelButon_Click);
             // 
-            // button9
+            // russiaButton
             // 
-            this.button9.BackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.ForeColor = System.Drawing.Color.Transparent;
-            this.button9.Location = new System.Drawing.Point(411, 35);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(60, 113);
-            this.button9.TabIndex = 25;
-            this.button9.UseVisualStyleBackColor = false;
+            this.russiaButton.AccessibleName = "balkansButton";
+            this.russiaButton.BackColor = System.Drawing.Color.Transparent;
+            this.russiaButton.FlatAppearance.BorderSize = 0;
+            this.russiaButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.russiaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.russiaButton.ForeColor = System.Drawing.Color.Transparent;
+            this.russiaButton.Location = new System.Drawing.Point(411, 35);
+            this.russiaButton.Name = "russiaButton";
+            this.russiaButton.Size = new System.Drawing.Size(60, 113);
+            this.russiaButton.TabIndex = 25;
+            this.russiaButton.UseVisualStyleBackColor = false;
+            this.russiaButton.Click += new System.EventHandler(this.russiaButton_Click);
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.russiaButton);
+            this.Controls.Add(this.archangelButon);
+            this.Controls.Add(this.ukraineButton);
+            this.Controls.Add(this.belorussiaButton);
+            this.Controls.Add(this.kareliaButton);
+            this.Controls.Add(this.westernrussiaButton);
+            this.Controls.Add(this.caucasusButton);
+            this.Controls.Add(this.balkansButton);
             this.Controls.Add(this.incomeLabel);
             this.Controls.Add(this.typeLabel);
             this.Controls.Add(this.buyBox);
@@ -379,13 +395,13 @@
         private System.Windows.Forms.TextBox buyBox;
         private System.Windows.Forms.Label typeLabel;
         private System.Windows.Forms.Label incomeLabel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button balkansButton;
+        private System.Windows.Forms.Button caucasusButton;
+        private System.Windows.Forms.Button westernrussiaButton;
+        private System.Windows.Forms.Button kareliaButton;
+        private System.Windows.Forms.Button belorussiaButton;
+        private System.Windows.Forms.Button ukraineButton;
+        private System.Windows.Forms.Button archangelButon;
+        private System.Windows.Forms.Button russiaButton;
     }
 }
