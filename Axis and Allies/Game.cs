@@ -371,7 +371,14 @@ namespace Axis_and_Allies
                     #region AI turn
 
                     #region Target accuriment
-                    //clear lists
+                    if (Menu.nation == "USSR")
+                    {
+                        aination = "Germany";
+                    }
+                    else
+                    {
+                        aination = "USSR";
+                    }
                     ussrProvinces.Clear();
                     germanyProvinces.Clear();
 
@@ -504,7 +511,7 @@ namespace Axis_and_Allies
                             }
                         }
 
-                        foreach (Province p in ussrProvinces)
+                        foreach (Province p in germanyProvinces)
                         {
                             switch (p.name)
                             {
