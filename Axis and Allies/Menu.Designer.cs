@@ -35,6 +35,7 @@
             this.editionLabel = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.playLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -83,11 +84,11 @@
             // 
             this.editionLabel.AutoSize = true;
             this.editionLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editionLabel.Location = new System.Drawing.Point(186, 132);
+            this.editionLabel.Location = new System.Drawing.Point(170, 133);
             this.editionLabel.Name = "editionLabel";
-            this.editionLabel.Size = new System.Drawing.Size(88, 18);
+            this.editionLabel.Size = new System.Drawing.Size(135, 18);
             this.editionLabel.TabIndex = 5;
-            this.editionLabel.Text = "World Edition";
+            this.editionLabel.Text = "Operation Barbarosa";
             // 
             // button4
             // 
@@ -96,7 +97,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 6;
-            this.button4.Text = "New Game";
+            this.button4.Text = "How to Play";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.buttonePress);
             // 
@@ -111,10 +112,19 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.buttonePress);
             // 
+            // playLabel
+            // 
+            this.playLabel.AutoSize = true;
+            this.playLabel.Location = new System.Drawing.Point(59, 57);
+            this.playLabel.Name = "playLabel";
+            this.playLabel.Size = new System.Drawing.Size(0, 13);
+            this.playLabel.TabIndex = 8;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.playLabel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.editionLabel);
@@ -139,5 +149,6 @@
         private System.Windows.Forms.Label editionLabel;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label playLabel;
     }
 }

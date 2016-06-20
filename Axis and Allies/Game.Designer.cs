@@ -41,7 +41,6 @@
             this.southernEurope = new System.Windows.Forms.Button();
             this.easternEurope = new System.Windows.Forms.Button();
             this.buyButton = new System.Windows.Forms.Button();
-            this.buyBox = new System.Windows.Forms.TextBox();
             this.typeLabel = new System.Windows.Forms.Label();
             this.incomeLabel = new System.Windows.Forms.Label();
             this.balkansButton = new System.Windows.Forms.Button();
@@ -52,6 +51,8 @@
             this.ukraineButton = new System.Windows.Forms.Button();
             this.archangelButon = new System.Windows.Forms.Button();
             this.russiaButton = new System.Windows.Forms.Button();
+            this.resultLabel = new System.Windows.Forms.Label();
+            this.purchaseBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // phaseLabel
@@ -83,7 +84,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
+            this.button2.Text = "Next Phase";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -193,13 +194,6 @@
             this.buyButton.Text = "Buy";
             this.buyButton.UseVisualStyleBackColor = true;
             this.buyButton.Click += new System.EventHandler(this.buyButton_Click);
-            // 
-            // buyBox
-            // 
-            this.buyBox.Location = new System.Drawing.Point(180, 407);
-            this.buyBox.Name = "buyBox";
-            this.buyBox.Size = new System.Drawing.Size(75, 20);
-            this.buyBox.TabIndex = 15;
             // 
             // typeLabel
             // 
@@ -339,11 +333,30 @@
             this.russiaButton.UseVisualStyleBackColor = false;
             this.russiaButton.Click += new System.EventHandler(this.russiaButton_Click);
             // 
+            // resultLabel
+            // 
+            this.resultLabel.AutoSize = true;
+            this.resultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultLabel.Location = new System.Drawing.Point(171, 271);
+            this.resultLabel.Name = "resultLabel";
+            this.resultLabel.Size = new System.Drawing.Size(0, 24);
+            this.resultLabel.TabIndex = 26;
+            // 
+            // purchaseBox
+            // 
+            this.purchaseBox.FormattingEnabled = true;
+            this.purchaseBox.Location = new System.Drawing.Point(180, 406);
+            this.purchaseBox.Name = "purchaseBox";
+            this.purchaseBox.Size = new System.Drawing.Size(80, 21);
+            this.purchaseBox.TabIndex = 27;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.purchaseBox);
+            this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.russiaButton);
             this.Controls.Add(this.archangelButon);
             this.Controls.Add(this.ukraineButton);
@@ -354,7 +367,6 @@
             this.Controls.Add(this.balkansButton);
             this.Controls.Add(this.incomeLabel);
             this.Controls.Add(this.typeLabel);
-            this.Controls.Add(this.buyBox);
             this.Controls.Add(this.buyButton);
             this.Controls.Add(this.southernEurope);
             this.Controls.Add(this.easternEurope);
@@ -392,7 +404,6 @@
         private System.Windows.Forms.Button southernEurope;
         private System.Windows.Forms.Button easternEurope;
         private System.Windows.Forms.Button buyButton;
-        private System.Windows.Forms.TextBox buyBox;
         private System.Windows.Forms.Label typeLabel;
         private System.Windows.Forms.Label incomeLabel;
         private System.Windows.Forms.Button balkansButton;
@@ -403,5 +414,7 @@
         private System.Windows.Forms.Button ukraineButton;
         private System.Windows.Forms.Button archangelButon;
         private System.Windows.Forms.Button russiaButton;
+        private System.Windows.Forms.Label resultLabel;
+        private System.Windows.Forms.ComboBox purchaseBox;
     }
 }

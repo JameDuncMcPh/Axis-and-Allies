@@ -62,16 +62,25 @@ namespace Axis_and_Allies
         {
             InitializeComponent();
 
+            //setup the ai and human stuff
             switch (Menu.nation)
             {
                 case "USSR":
+                    //incomes
                     income = 7;
                     aiIncome = 12;
+
+                    //names
+                    aination = "Germany";
                     break;
 
                 case "Germany":
+                    //incomes
                     income = 12;
                     aiIncome = 7;
+
+                    //names
+                    aination = "USSR";
                     break;
 
                 default:
@@ -111,7 +120,14 @@ namespace Axis_and_Allies
 
             phaseLabel.Text = "Movement";
             phase = 1;
-            incomeLabel.Text = Convert.ToString(income);
+            incomeLabel.Text = "Income: " + income.ToString();
+
+            purchaseBox.Items.Add("infantry");
+            purchaseBox.Items.Add("artillery");
+            purchaseBox.Items.Add("armour");
+            purchaseBox.Items.Add("fighter");
+            purchaseBox.Items.Add("bomber");
+
         }
 
         private void Set_up()
@@ -232,14 +248,15 @@ namespace Axis_and_Allies
             try
             {
                 typeLabel.Text = "Type:";
+                string type = purchaseBox.Text;
 
-                Unit u = new Unit(Convert.ToString(buyBox.Text), "Germany", "Germany");
+                Unit u = new Unit(type, "Germany", "Germany");
 
                 if (Menu.nation == "Germany" && income > u.cost)
                 {
                     world[0].garrison.Add(u);
                     income -= u.cost;
-                    incomeLabel.Text = income.ToString();
+                    incomeLabel.Text = "Income: " + income.ToString();
 
                     Refresh();
                 }
@@ -249,7 +266,7 @@ namespace Axis_and_Allies
                     u.province = "Russia";
                     world[10].garrison.Add(u);
                     income -= u.cost;
-                    incomeLabel.Text = income.ToString();
+                    incomeLabel.Text = "Income: " + income.ToString();
 
                     Refresh();
                 }
@@ -288,12 +305,23 @@ namespace Axis_and_Allies
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //switching phases of the game
             switch (phase)
             {
+                case 0:
+                    //set variables for next phase and set text for current
+                    phase = 1;
+                    counter = 0;
+                    phaseLabel.Text = "Movement";
+                    break;
+
                 case 1:
+                    //set variables for next phase and set text for current
                     phase = 2;
                     counter = 0;
+                    phaseLabel.Text = "Combat";
 
+                    //foreach province add 1 to your income
                     foreach (Province p in world)
                     {
                         if (p.owner == Menu.nation)
@@ -302,12 +330,14 @@ namespace Axis_and_Allies
                         }
                     }
 
+                    //cheack to see if the province is contested
                     foreach (Province p in world)
                     {
                         foreach (Unit u in p.garrison)
                         {
                             if (u.owner != p.owner)
                             {
+                                //if so then make a battle
                                 Form f = this.FindForm();
                                 Battle b = new Battle();
                                 f.Controls.Add(b);
@@ -325,6 +355,7 @@ namespace Axis_and_Allies
                     {
                         foreach (Unit u in p.garrison)
                         {
+                            //reset all move
                             u.move = u.oMove;
                         }
                     }
@@ -332,33 +363,52 @@ namespace Axis_and_Allies
                     break;
 
                 case 2:
+                    //set variables for next phase and set text for current
+                    phase = 0;
+                    counter = 0;
+                    phaseLabel.Text = "AI TURN";
 
                     #region AI turn
 
                     #region Target accuriment
+                    //clear lists
                     ussrProvinces.Clear();
                     germanyProvinces.Clear();
 
+                    //russian ai 
                     if (aination == "USSR")
                     {
-
+                        //see what provinces it controls
                         foreach (Province p in world)
                         {
                             if (p.owner == "USSR")
                             {
                                 ussrProvinces.Add(p);
                             }
+                            else
+                            {
+                                if(p.name == "Russia")
+                                {
+                                    #region Result
+                                    //print out result of the game
+                                    resultLabel.BringToFront();
+                                    resultLabel.Text = "WINNER";
+                                    #endregion
+                                }
+                            }
                         }
 
+                        //then depending on provinces choose which one to attack
                         foreach (Province p in ussrProvinces)
                         {
                             switch (p.name)
                             {
                                 case "Germany":
-
-                                    #region Win
+                                    #region Result
+                                    //print out result of the game
+                                    resultLabel.BringToFront();
+                                    resultLabel.Text = "LOSER";
                                     #endregion
-
                                     break;
 
                                 case "Eastern_Europe":
@@ -369,7 +419,7 @@ namespace Axis_and_Allies
                                     }
                                     break;
                                 case "Balkans":
-                                    if (ussrProvinces.Count() > 9)
+                                    if (ussrProvinces.Count() > 7)
                                     {
                                         aitarget = "Eastern_Europe";
                                         counter = 4;
@@ -431,13 +481,26 @@ namespace Axis_and_Allies
 
                         }
                     }
+                    //German AI
                     else
                     {
+                        //find out what provinces
                         foreach (Province p in world)
                         {
                             if (p.owner == "Germany")
                             {
                                 germanyProvinces.Add(p);
+                            }
+                            else
+                            {
+                                if (p.name == "Germany")
+                                {
+                                    #region Result
+                                    //print out result of the game
+                                    resultLabel.BringToFront();
+                                    resultLabel.Text = "WINNER";
+                                    #endregion
+                                }
                             }
                         }
 
@@ -446,7 +509,11 @@ namespace Axis_and_Allies
                             switch (p.name)
                             {
                                 case "Russia":
-
+                                    #region Result
+                                    //print out result of the game
+                                    resultLabel.BringToFront();
+                                    resultLabel.Text = "LOSER";
+                                    #endregion
                                     break;
                                 case "Archangel":
                                     if (ussrProvinces.Count() > 9)
@@ -1139,7 +1206,7 @@ namespace Axis_and_Allies
 
         private void easternEurope_Click(object sender, EventArgs e)
         {
-            counter = 4;
+            counter = 3;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
@@ -1229,7 +1296,7 @@ namespace Axis_and_Allies
 
         private void Balkans_Click(object sender, EventArgs e)
         {
-            counter = 3;
+            counter = 4;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
