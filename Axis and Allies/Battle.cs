@@ -30,6 +30,8 @@ namespace Axis_and_Allies
 
             this.Focus();
 
+            provinceLabel.Text = Game.world[Game.counter].name;
+
             foreach (Unit u in Game.world[counter].garrison)
             {
                 if (u.owner != Game.world[counter].owner)

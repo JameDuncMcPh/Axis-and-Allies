@@ -47,6 +47,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.provinceLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // attackButton
@@ -222,10 +223,19 @@
             this.label5.TabIndex = 18;
             this.label5.Text = "Armour";
             // 
+            // provinceLabel
+            // 
+            this.provinceLabel.AutoSize = true;
+            this.provinceLabel.Location = new System.Drawing.Point(245, 72);
+            this.provinceLabel.Name = "provinceLabel";
+            this.provinceLabel.Size = new System.Drawing.Size(0, 13);
+            this.provinceLabel.TabIndex = 19;
+            // 
             // Battle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.provinceLabel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -274,5 +284,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label provinceLabel;
     }
 }
