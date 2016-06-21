@@ -53,6 +53,7 @@
             this.russiaButton = new System.Windows.Forms.Button();
             this.resultLabel = new System.Windows.Forms.Label();
             this.purchaseBox = new System.Windows.Forms.ComboBox();
+            this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // phaseLabel
@@ -122,14 +123,14 @@
             // garrisonBox2
             // 
             this.garrisonBox2.FormattingEnabled = true;
-            this.garrisonBox2.Location = new System.Drawing.Point(393, 346);
+            this.garrisonBox2.Location = new System.Drawing.Point(426, 346);
             this.garrisonBox2.Name = "garrisonBox2";
             this.garrisonBox2.Size = new System.Drawing.Size(45, 95);
             this.garrisonBox2.TabIndex = 7;
             // 
             // movingButton
             // 
-            this.movingButton.Location = new System.Drawing.Point(364, 366);
+            this.movingButton.Location = new System.Drawing.Point(379, 366);
             this.movingButton.Name = "movingButton";
             this.movingButton.Size = new System.Drawing.Size(23, 23);
             this.movingButton.TabIndex = 8;
@@ -139,7 +140,7 @@
             // 
             // movingButton2
             // 
-            this.movingButton2.Location = new System.Drawing.Point(364, 395);
+            this.movingButton2.Location = new System.Drawing.Point(380, 395);
             this.movingButton2.Name = "movingButton2";
             this.movingButton2.Size = new System.Drawing.Size(23, 23);
             this.movingButton2.TabIndex = 9;
@@ -150,7 +151,7 @@
             // dropDown
             // 
             this.dropDown.FormattingEnabled = true;
-            this.dropDown.Location = new System.Drawing.Point(393, 314);
+            this.dropDown.Location = new System.Drawing.Point(417, 314);
             this.dropDown.Name = "dropDown";
             this.dropDown.Size = new System.Drawing.Size(80, 21);
             this.dropDown.TabIndex = 11;
@@ -350,11 +351,22 @@
             this.purchaseBox.Size = new System.Drawing.Size(80, 21);
             this.purchaseBox.TabIndex = 27;
             // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(28, 455);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 28;
+            this.saveButton.Text = "Save and Quit";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.purchaseBox);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.russiaButton);
@@ -416,5 +428,6 @@
         private System.Windows.Forms.Button russiaButton;
         private System.Windows.Forms.Label resultLabel;
         private System.Windows.Forms.ComboBox purchaseBox;
+        private System.Windows.Forms.Button saveButton;
     }
 }

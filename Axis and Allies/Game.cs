@@ -244,6 +244,65 @@ namespace Axis_and_Allies
             }
         }
 
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            int aInf, aArt, aArm, aFig, aBom;
+            aInf = aArt = aArm = aFig = aBom = 0;
+
+            XmlTextWriter writer = new XmlTextWriter("Setup.xml", null);
+
+            writer.WriteStartElement("savegame");
+
+            foreach (Province p in world)
+            {
+                aInf = aArt = aArm = aFig = aBom = 0;
+                writer.WriteStartElement(p.name);
+
+                foreach (Unit u in p.garrison)
+                {
+                    switch (u.type)
+                    {
+                        case "infantry":
+                            aInf++;
+                            break;
+
+                        case "artillery":
+                            aArt++;
+                            break;
+
+                        case "armour":
+                            aArm++;
+                            break;
+
+                        case "figther":
+                            aFig++;
+                            break;
+
+                        case "bomber":
+                            aBom++;
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+
+                writer.WriteElementString("owner", p.owner);
+                writer.WriteElementString("infantry", aInf.ToString());
+                writer.WriteElementString("artillery", aArt.ToString());
+                writer.WriteElementString("armour", aArm.ToString());
+                writer.WriteElementString("figther", aFig.ToString());
+                writer.WriteElementString("bomber", aBom.ToString());
+                writer.WriteElementString("landcon", );
+                writer.WriteElementString("IC", c.perk);
+
+                writer.WriteEndElement();
+            }
+
+            writer.WriteEndElement();
+            writer.Close();
+        }
+
         private void buyButton_Click(object sender, EventArgs e)
         {
             try
@@ -643,7 +702,7 @@ namespace Axis_and_Allies
                                     {
                                         if (p.landConnection.Contains(st))
                                         {
-                                            secondCounter = intLine[InLine.IndexOf(st)];
+                                            secondCounter = nextintLine[nextInLine.IndexOf(st)];
 
                                             for (int i = 0; i < p.garrison.Count(); i++)
                                             {
