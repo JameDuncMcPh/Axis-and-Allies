@@ -53,7 +53,8 @@ namespace Axis_and_Allies
         string aination, aitarget;
         List<string> InLine = new List<string>();
         List<string> nextInLine = new List<string>();
-        List<string> nextnextInLine = new List<string>();
+        List<int> intLine = new List<int>();
+        List<int> nextintLine = new List<int>();
         #endregion
 
         #endregion
@@ -523,63 +524,63 @@ namespace Axis_and_Allies
                                     #endregion
                                     break;
                                 case "Archangel":
-                                    if (ussrProvinces.Count() > 9)
+                                    if (germanyProvinces.Count() == 11)
                                     {
                                         aitarget = "Russia";
                                         counter = 9;
                                     }
                                     break;
                                 case "WesternRussia":
-                                    if (ussrProvinces.Count() > 8)
+                                    if (germanyProvinces.Count() == 10)
                                     {
                                         aitarget = "Archangel";
                                         counter = 7;
                                     }
                                     break;
                                 case "Caucasus":
-                                    if (ussrProvinces.Count() > 7)
+                                    if (germanyProvinces.Count() == 9)
                                     {
                                         aitarget = "WesternRussia";
                                         counter = 11;
                                     }
                                     break;
                                 case "Ukraine":
-                                    if (ussrProvinces.Count() > 6)
+                                    if (germanyProvinces.Count() == 8)
                                     {
                                         aitarget = "Caucasus";
                                         counter = 10;
                                     }
                                     break;
                                 case "Belorussia":
-                                    if (ussrProvinces.Count() > 5)
+                                    if (germanyProvinces.Count() == 7)
                                     {
                                         aitarget = "Ukraine";
                                         counter = 5;
                                     }
                                     break;
                                 case "Karelia":
-                                    if (ussrProvinces.Count() > 4)
+                                    if (germanyProvinces.Count() == 6)
                                     {
                                         aitarget = "Belorussia";
                                         counter = 6;
                                     }
                                     break;
                                 case "Eastern_Europe":
-                                    if (ussrProvinces.Count() > 3)
+                                    if (germanyProvinces.Count() == 5)
                                     {
                                         aitarget = "Ukraine";
                                         counter = 5;
                                     }
                                     break;
                                 case "Balkans":
-                                    if (ussrProvinces.Count() > 3)
+                                    if (germanyProvinces.Count() == 4)
                                     {
                                         aitarget = "Eastern_Europe";
                                         counter = 3;
                                     }
                                     break;
                                 case "Germany":
-                                    if (ussrProvinces.Count() > 2)
+                                    if (germanyProvinces.Count() == 3)
                                     {
                                         aitarget = "Balkans";
                                         counter = 3;
@@ -600,8 +601,9 @@ namespace Axis_and_Allies
                         if (p.landConnection.Contains(aitarget) && p.garrison.Count() > world[counter].garrison.Count())
                         {
                             InLine.Add(p.name);
+                            intLine.Add(ussrProvinces.IndexOf(p)); 
 
-                            for(int i = 0; i < p.garrison.Count(); i++)
+                            for (int i = 0; i < p.garrison.Count(); i++)
                             {
                                 if (p.garrison[i].move > 0)
                                 {
@@ -610,8 +612,6 @@ namespace Axis_and_Allies
 
                                     world[counter].garrison.Add(p.garrison[i]);
                                     p.garrison.Remove(p.garrison[i]);
-                                    // secondCounter = world.
-                                    int temp = ussrProvinces.IndexOf(p);
                                 }
                             }
                         }
@@ -622,6 +622,8 @@ namespace Axis_and_Allies
                                 if (p.landConnection.Contains(s))
                                 {
                                     nextInLine.Add(p.name);
+                                    nextintLine.Add(ussrProvinces.IndexOf(p));
+                                    secondCounter = intLine[InLine.IndexOf(s)];
 
                                     for (int i = 0; i < p.garrison.Count(); i++)
                                     {
@@ -630,7 +632,7 @@ namespace Axis_and_Allies
                                             p.garrison[i].move--;
                                             p.garrison[i].province = s;
 
-                                            world[counter].garrison.Add(p.garrison[i]);
+                                            world[secondCounter].garrison.Add(p.garrison[i]);
                                             p.garrison.Remove(p.garrison[i]);
                                         }
                                     }
@@ -641,6 +643,8 @@ namespace Axis_and_Allies
                                     {
                                         if (p.landConnection.Contains(st))
                                         {
+                                            secondCounter = intLine[InLine.IndexOf(st)];
+
                                             for (int i = 0; i < p.garrison.Count(); i++)
                                             {
                                                 if (p.garrison[i].move > 0)

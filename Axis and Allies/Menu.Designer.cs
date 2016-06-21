@@ -115,9 +115,10 @@
             // playLabel
             // 
             this.playLabel.AutoSize = true;
+            this.playLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playLabel.Location = new System.Drawing.Point(59, 57);
             this.playLabel.Name = "playLabel";
-            this.playLabel.Size = new System.Drawing.Size(0, 13);
+            this.playLabel.Size = new System.Drawing.Size(0, 20);
             this.playLabel.TabIndex = 8;
             // 
             // Menu

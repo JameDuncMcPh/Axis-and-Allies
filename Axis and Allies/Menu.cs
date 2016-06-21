@@ -92,7 +92,12 @@ namespace Axis_and_Allies
                                     + "to conqour the oppents captial, which in this case " + "\n"
                                     + "are the provinces of Germany for the USSR and Russia " + "\n"
                                     + "for Germany respectively, by moving units into a area " + "\n"
-                                    + "and winning a battle aganist the oppsing forces. " + "\n";
+                                    + "and winning a battle aganist the oppsing forces. " + "\n" + "\n"
+                                    + "Once your enter the game thier will be two boxes" + "\n"
+                                    + ", the first one shows the units of the province of which you just" + "\n"
+                                    + "clicked on while the second one is the one which" + "\n"
+                                    + "you have chosen to move your troops too. To move" + "\n"
+                                    + "the troops just clicked the arrow button in that direction" + "\n";
             }
             else if (sender.Equals(quitButton) && newGame == false)
             {
