@@ -54,6 +54,7 @@
             this.resultLabel = new System.Windows.Forms.Label();
             this.purchaseBox = new System.Windows.Forms.ComboBox();
             this.saveButton = new System.Windows.Forms.Button();
+            this.moveLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // phaseLabel
@@ -85,7 +86,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Next Phase";
+            this.button2.Text = "To Combat";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -361,11 +362,22 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // moveLabel
+            // 
+            this.moveLabel.AutoSize = true;
+            this.moveLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moveLabel.Location = new System.Drawing.Point(354, 444);
+            this.moveLabel.Name = "moveLabel";
+            this.moveLabel.Size = new System.Drawing.Size(74, 15);
+            this.moveLabel.TabIndex = 30;
+            this.moveLabel.Text = "Move Buttons";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.moveLabel);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.purchaseBox);
             this.Controls.Add(this.resultLabel);
@@ -429,5 +441,6 @@
         private System.Windows.Forms.Label resultLabel;
         private System.Windows.Forms.ComboBox purchaseBox;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Label moveLabel;
     }
 }

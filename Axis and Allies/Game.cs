@@ -120,10 +120,11 @@ namespace Axis_and_Allies
 
             world = new Province[] { Germany, Western_Europe, Southern_Europe, Balkans, Eatern_Europe, Ukraine, Belorussia, Archangel, Karelia, Caucasus, Russia, WesternRussia };
 
-            //
+            //load the save files
             Set_up(Menu.load);
 
             //set the variables for the beginng
+            dropDown.Text = "Select province";
             phaseLabel.Text = "Movement";
             phase = 1;
             incomeLabel.Text = "Income: " + income.ToString();
@@ -399,6 +400,7 @@ namespace Axis_and_Allies
                     phase = 1;
                     counter = 0;
                     phaseLabel.Text = "Movement";
+                    button2.Text = "To Combat";
                     break;
 
                 case 1:
@@ -406,6 +408,7 @@ namespace Axis_and_Allies
                     phase = 2;
                     counter = 0;
                     phaseLabel.Text = "Combat";
+                    button2.Text = "To Enemy Turn";
 
                     //foreach province add 1 to your income
                     foreach (Province p in world)
@@ -453,6 +456,7 @@ namespace Axis_and_Allies
                     phase = 0;
                     counter = 0;
                     phaseLabel.Text = "AI TURN";
+                    button2.Text = "To your movement";
 
                     //run AI turn
                     #region AI turn
@@ -819,75 +823,81 @@ namespace Axis_and_Allies
 
         private void movingButton_Click(object sender, EventArgs e)
         {
-            //see if it can be moved by game standards
-            if (world[counter].garrison[garrisonBox.SelectedIndex].move > 0 && world[counter].garrison[garrisonBox.SelectedIndex].owner == Menu.nation)
+            try
             {
-                //move the unit from one list to another and lower its move counter
-                world[counter].garrison[garrisonBox.SelectedIndex].move--;
-                world[counter].garrison[garrisonBox.SelectedIndex].province = world[secondCounter].name;
-
-                world[secondCounter].garrison.Add(world[counter].garrison[garrisonBox.SelectedIndex]);
-                world[counter].garrison.RemoveAt(garrisonBox.SelectedIndex);
-
-                garrisonBox.Items.Clear();
-                garrisonBox2.Items.Clear();
-
-                //reprint all the units in both garrison boxes
-                foreach (Unit u in world[counter].garrison)
+                //see if it can be moved by game standards
+                if (world[counter].garrison[garrisonBox.SelectedIndex].move > 0 && world[counter].garrison[garrisonBox.SelectedIndex].owner == Menu.nation)
                 {
-                    switch (u.type)
+                    //move the unit from one list to another and lower its move counter
+                    world[counter].garrison[garrisonBox.SelectedIndex].move--;
+                    world[counter].garrison[garrisonBox.SelectedIndex].province = world[secondCounter].name;
+
+                    world[secondCounter].garrison.Add(world[counter].garrison[garrisonBox.SelectedIndex]);
+                    world[counter].garrison.RemoveAt(garrisonBox.SelectedIndex);
+
+                    garrisonBox.Items.Clear();
+                    garrisonBox2.Items.Clear();
+
+                    //reprint all the units in both garrison boxes
+                    foreach (Unit u in world[counter].garrison)
                     {
-                        case "infantry":
-                            garrisonBox.Items.Add("inf");
-                            break;
+                        switch (u.type)
+                        {
+                            case "infantry":
+                                garrisonBox.Items.Add("inf");
+                                break;
 
-                        case "artillery":
-                            garrisonBox.Items.Add("art");
-                            break;
+                            case "artillery":
+                                garrisonBox.Items.Add("art");
+                                break;
 
-                        case "armour":
-                            garrisonBox.Items.Add("arm");
-                            break;
+                            case "armour":
+                                garrisonBox.Items.Add("arm");
+                                break;
 
-                        case "fighter":
-                            garrisonBox.Items.Add("fig");
-                            break;
+                            case "fighter":
+                                garrisonBox.Items.Add("fig");
+                                break;
 
-                        case "bomber":
-                            garrisonBox.Items.Add("bom");
-                            break;
-                        default:
-                            break;
+                            case "bomber":
+                                garrisonBox.Items.Add("bom");
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+
+                    foreach (Unit u in world[secondCounter].garrison)
+                    {
+                        switch (u.type)
+                        {
+                            case "infantry":
+                                garrisonBox2.Items.Add("inf");
+                                break;
+
+                            case "artillery":
+                                garrisonBox2.Items.Add("art");
+                                break;
+
+                            case "armour":
+                                garrisonBox2.Items.Add("arm");
+                                break;
+
+                            case "fighter":
+                                garrisonBox2.Items.Add("fig");
+                                break;
+
+                            case "bomber":
+                                garrisonBox2.Items.Add("bom");
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
-
-                foreach (Unit u in world[secondCounter].garrison)
-                {
-                    switch (u.type)
-                    {
-                        case "infantry":
-                            garrisonBox2.Items.Add("inf");
-                            break;
-
-                        case "artillery":
-                            garrisonBox2.Items.Add("art");
-                            break;
-
-                        case "armour":
-                            garrisonBox2.Items.Add("arm");
-                            break;
-
-                        case "fighter":
-                            garrisonBox2.Items.Add("fig");
-                            break;
-
-                        case "bomber":
-                            garrisonBox2.Items.Add("bom");
-                            break;
-                        default:
-                            break;
-                    }
-                }
+            }
+            catch
+            {
             }
         }
 
