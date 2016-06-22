@@ -101,20 +101,23 @@ namespace Axis_and_Allies
             //showing hoe to play
             else if (sender.Equals(button4) && newGame == false)
             {
+                //set variables
                 titleLabel.Visible = false;
                 editionLabel.Visible = false;
                 gameButton.Visible = false;
                 LoadButton.Visible = false;
                 button4.Visible = false;
                 instrutions = true;
+                newGame = true;
 
+                //load text
                 quitButton.Text = "Back";
                 playLabel.Text = "Axis and Allies is a stragtic board where one tries " + "\n"
-                                    + "to conqour the oppents captial, which in this case " + "\n"
+                                    + "to conqour the opponents captial, which in this case " + "\n"
                                     + "are the provinces of Germany for the USSR and Russia " + "\n"
                                     + "for Germany respectively, by moving units into a area " + "\n"
                                     + "and winning a battle aganist the oppsing forces. " + "\n" + "\n"
-                                    + "Once your enter the game thier will be two boxes" + "\n"
+                                    + "Once your enter the game their will be two boxes" + "\n"
                                     + ", the first one shows the units of the province of which you just" + "\n"
                                     + "clicked on while the second one is the one which" + "\n"
                                     + "you have chosen to move your troops too. To move" + "\n"
@@ -123,18 +126,22 @@ namespace Axis_and_Allies
             //quiting
             else if (sender.Equals(quitButton) && newGame == false)
             {
+                //exit game
                 Application.Exit();
             }
             //backing out of information
             else if (sender.Equals(quitButton) && instrutions == true)
             {
+                //set variables
                 titleLabel.Visible = true;
                 editionLabel.Visible = true;
                 gameButton.Visible = true;
                 LoadButton.Visible = true;
                 button4.Visible = true;
                 instrutions = false;
+                newGame = true;
 
+                //exit the instrutions
                 quitButton.Text = "Quit";
                 playLabel.Text = "";
             }

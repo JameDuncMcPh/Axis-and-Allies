@@ -64,7 +64,7 @@ namespace Axis_and_Allies
             InitializeComponent();
 
             //setup the ai and human stuff
-            switch (Menu.nation)
+            switch (nation)
             {
                 case "USSR":
                     //incomes
@@ -94,7 +94,7 @@ namespace Axis_and_Allies
             //focus on this form
             this.Focus();
 
-            //set which natin the player is
+            //set which nation the player is
             nation = Menu.nation;
 
             //create trhe provinces and add them to the world
@@ -125,9 +125,28 @@ namespace Axis_and_Allies
 
             //set the variables for the beginng
             dropDown.Text = "Select province";
-            phaseLabel.Text = "Movement";
-            phase = 1;
             incomeLabel.Text = "Income: " + income.ToString();
+
+            if (phase == 1)
+            {
+                phaseLabel.Text = "Movement";
+                button2.Text = "To Combat";
+            }
+            else if (phase == 2)
+            {
+                phaseLabel.Text = "Combat";
+                button2.Text = "End Turn";
+            }
+            else if (phase == 3)
+            {
+                phaseLabel.Text = "AI TURN";
+                button2.Text = "Begin Turn";
+            }
+            else
+            {
+                phaseLabel.Text = "Movement";
+                button2.Text = "To Combat";
+            }
 
             //set the unit for purchase
             purchaseBox.Items.Add("infantry");
@@ -156,6 +175,32 @@ namespace Axis_and_Allies
             //start looking for the right node to find information
             foreach (XmlNode child in parent)
             {
+                //try and load player information
+                if (child.Name == "player")
+                {
+                    foreach (XmlNode grandchild in child)
+                    {
+                        try
+                        {
+                            if (grandchild.Name == "IPC")
+                            {
+                                income = Convert.ToInt16(grandchild.InnerText);
+                            }
+                            else if (grandchild.Name == "country" && (grandchild.InnerText == "USSR"|| grandchild.InnerText == "Germany"))
+                            {
+                                Menu.nation = Convert.ToString(grandchild.InnerText);
+                            }
+                            else if (grandchild.Name == "phase")
+                            {
+                                phase = Convert.ToInt16(grandchild.InnerText);
+                            }
+                        }
+                        catch
+                        {
+                        }
+                    }
+                }
+
                 //whether to choose save or new game data
                 if (child.Name == s)
                 {
@@ -271,6 +316,13 @@ namespace Axis_and_Allies
             //create writer
             XmlTextWriter writer = new XmlTextWriter("Setup.xml", null);
 
+            writer.WriteStartElement("player");
+
+            //record information about the player
+            writer.WriteElementString("IPC", income.ToString());
+            writer.WriteElementString("country", nation);
+            writer.WriteElementString("phase", phase.ToString());
+
             writer.WriteStartElement("savegame");
 
             //record how many units are in each provine
@@ -327,9 +379,10 @@ namespace Axis_and_Allies
                 writer.WriteEndElement();
             }
 
-            //close off everything
+            //close off everything and quit
             writer.WriteEndElement();
             writer.Close();
+            Application.Exit();
         }
 
         private void buyButton_Click(object sender, EventArgs e)
@@ -345,7 +398,7 @@ namespace Axis_and_Allies
                 Unit u = new Unit(type, "Germany", "Germany");
 
                 //cheack to see if thier is suffiecent income if so add it to the game
-                if (Menu.nation == "Germany" && income > u.cost)
+                if (nation == "Germany" && income > u.cost)
                 {
                     world[0].garrison.Add(u);
                     income -= u.cost;
@@ -408,12 +461,12 @@ namespace Axis_and_Allies
                     phase = 2;
                     counter = 0;
                     phaseLabel.Text = "Combat";
-                    button2.Text = "To Enemy Turn";
+                    button2.Text = "End Turn";
 
                     //foreach province add 1 to your income
                     foreach (Province p in world)
                     {
-                        if (p.owner == Menu.nation)
+                        if (p.owner == nation)
                         {
                             income++;
                         }
@@ -456,7 +509,7 @@ namespace Axis_and_Allies
                     phase = 0;
                     counter = 0;
                     phaseLabel.Text = "AI TURN";
-                    button2.Text = "To your movement";
+                    button2.Text = "Begin Turn";
 
                     //run AI turn
                     #region AI turn
@@ -465,7 +518,7 @@ namespace Axis_and_Allies
                     #region Target accuriment
 
                     //determine what nation you are playing
-                    if (Menu.nation == "USSR")
+                    if (nation == "USSR")
                     {
                         aination = "Germany";
                     }
@@ -794,7 +847,7 @@ namespace Axis_and_Allies
                     #region Purchase
 
                     //cheack what nation is what and adds troops if thier is suffient income
-                    if (Menu.nation == "USSR")
+                    if (nation == "USSR")
                     {
                         if (aiIncome > 3)
                         {
@@ -826,7 +879,7 @@ namespace Axis_and_Allies
             try
             {
                 //see if it can be moved by game standards
-                if (world[counter].garrison[garrisonBox.SelectedIndex].move > 0 && world[counter].garrison[garrisonBox.SelectedIndex].owner == Menu.nation)
+                if (world[counter].garrison[garrisonBox.SelectedIndex].move > 0 && world[counter].garrison[garrisonBox.SelectedIndex].owner == nation)
                 {
                     //move the unit from one list to another and lower its move counter
                     world[counter].garrison[garrisonBox.SelectedIndex].move--;
@@ -907,7 +960,7 @@ namespace Axis_and_Allies
             try
             {
                 //if so than see if it can be moved by game standards
-                if (world[secondCounter].garrison[garrisonBox2.SelectedIndex].move > 0 && world[counter].garrison[garrisonBox.SelectedIndex].owner == Menu.nation)
+                if (world[secondCounter].garrison[garrisonBox2.SelectedIndex].move > 0 && world[counter].garrison[garrisonBox.SelectedIndex].owner == nation)
                 {
                     //move the unit from one list to another and lower its move counter
                     world[secondCounter].garrison[garrisonBox2.SelectedIndex].move--;
