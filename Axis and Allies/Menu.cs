@@ -12,9 +12,17 @@ namespace Axis_and_Allies
 {
     public partial class Menu : UserControl
     {
+        /// <summary>
+        ///  Created by Duncan McPherson
+        /// Jun 7 2016
+        /// A board game of operation babrossa
+        /// </summary>
+        
+        //variables
         bool newGame = false;
         bool instrutions = false;
 
+        public static string load;
         public static string nation;
 
         public Menu()
@@ -35,8 +43,10 @@ namespace Axis_and_Allies
 
             if (newGame == true)
             {
+                //chosing what country to play and startning game
                 if (sender.Equals(gameButton))
                 {
+                    load = "map";
                     button4.Visible = false;
                     nation = "USSR";
                     // f is the form that this control is on - ("this" is the current User Control)
@@ -49,6 +59,7 @@ namespace Axis_and_Allies
                 }
                 else if (sender.Equals(button2))
                 {
+                    load = "map";
                     nation = "Germany";
                     // f is the form that this control is on - ("this" is the current User Control)
                     Form f = this.FindForm();
@@ -59,7 +70,7 @@ namespace Axis_and_Allies
                     f.Controls.Add(g);                  
                 }               
             }
-
+            //choosing to play a new game
             if (sender.Equals(gameButton) && newGame == false)
             {
                 button2.Visible = true;
@@ -75,9 +86,19 @@ namespace Axis_and_Allies
 
                 newGame = true;
             }
+            //loading the old game
             else if (sender.Equals(LoadButton) && newGame == false)
             {
+                load = "savegame";
+                // f is the form that this control is on - ("this" is the current User Control)
+                Form f = this.FindForm();
+                f.Controls.Remove(this);
+
+                //if there is a wrong press then game over
+                Game g = new Game();
+                f.Controls.Add(g);
             }
+            //showing hoe to play
             else if (sender.Equals(button4) && newGame == false)
             {
                 titleLabel.Visible = false;
@@ -99,10 +120,12 @@ namespace Axis_and_Allies
                                     + "you have chosen to move your troops too. To move" + "\n"
                                     + "the troops just clicked the arrow button in that direction" + "\n";
             }
+            //quiting
             else if (sender.Equals(quitButton) && newGame == false)
             {
                 Application.Exit();
             }
+            //backing out of information
             else if (sender.Equals(quitButton) && instrutions == true)
             {
                 titleLabel.Visible = true;

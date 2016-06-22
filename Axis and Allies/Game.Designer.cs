@@ -151,9 +151,9 @@
             // dropDown
             // 
             this.dropDown.FormattingEnabled = true;
-            this.dropDown.Location = new System.Drawing.Point(417, 314);
+            this.dropDown.Location = new System.Drawing.Point(411, 314);
             this.dropDown.Name = "dropDown";
-            this.dropDown.Size = new System.Drawing.Size(80, 21);
+            this.dropDown.Size = new System.Drawing.Size(89, 21);
             this.dropDown.TabIndex = 11;
             this.dropDown.SelectedIndexChanged += new System.EventHandler(this.dropDown_SelectedIndexChanged);
             // 
@@ -355,7 +355,7 @@
             // 
             this.saveButton.Location = new System.Drawing.Point(28, 455);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.Size = new System.Drawing.Size(97, 23);
             this.saveButton.TabIndex = 28;
             this.saveButton.Text = "Save and Quit";
             this.saveButton.UseVisualStyleBackColor = true;

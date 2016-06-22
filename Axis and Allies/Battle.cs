@@ -18,6 +18,7 @@ namespace Axis_and_Allies
          
         public Battle()
         {
+            //set variables
             InitializeComponent();
             attakHits = 0;
             defenseHits = 0;    
@@ -25,13 +26,17 @@ namespace Axis_and_Allies
 
         private void Battle_Load(object sender, EventArgs e)
         {
+            //set variables
             counter = Game.counter;
             aInf = aArt = aArm = aFig = aBom = dInf = dArt = dArm = dFig = dBom = check = 0;
 
+            //focus the uc
             this.Focus();
 
+            //show the name of the province
             provinceLabel.Text = Game.world[Game.counter].name;
 
+            //foreach attacking unit count it and display the numbers on the screen
             foreach (Unit u in Game.world[counter].garrison)
             {
                 if (u.owner != Game.world[counter].owner)
@@ -64,6 +69,7 @@ namespace Axis_and_Allies
                         attackBomLabel.Text = Convert.ToString(aBom);
                     }
                 }
+                //same for the defenders
                 else
                 {
                     if (u.type == "infantry")
@@ -94,13 +100,16 @@ namespace Axis_and_Allies
                 }
             }
              
+            //set the defenders label as the owners name
             defenseLabel.Text = Game.world[counter].owner;
         }
 
         private void attackButton_Click(object sender, EventArgs e)
         {
+            //set variables
             check = secondcheck = 0;
 
+            //roll a random number for each unit to see if it lands a hit
             foreach (Unit u in Game.world[counter].garrison)
             {
                 if (u.owner != Game.world[counter].owner)
@@ -119,6 +128,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //count the hits and remove a unit for each one
             for (int i = 0; i < attakHits; i ++)
             {
                 foreach (Unit u in Game.world[counter].garrison)
@@ -142,6 +152,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //check to see if one side is empty
             foreach (Unit u in Game.world[counter].garrison)
             {
                 if (u.owner == Game.world[counter].owner)
@@ -154,6 +165,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //if so than end the battle and returnt to the main uc
             if (secondcheck == 0)
             {
                 if (Game.world[counter].garrison.Count() > 0)
@@ -171,6 +183,7 @@ namespace Axis_and_Allies
                 
             }
 
+            //else redo all the labels and recount the units for both sides
             aInf = aArt = aArm = aFig = aBom = dInf = dArt = dArm = dFig = dBom = 0;
 
             foreach (Unit u in Game.world[counter].garrison)
@@ -240,6 +253,7 @@ namespace Axis_and_Allies
 
         private void retreatButton_Click(object sender, EventArgs e)
         {
+            //if you decide to retreat move all units back to thier respective capitals
             foreach (Unit u in Game.world[Game.counter].garrison)
             {
                 if (u.owner != Game.world[Game.counter].owner && u.owner == Menu.nation)
@@ -257,6 +271,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //return to the main form
             Form f = this.FindForm();
             f.Controls.Remove(this);
         }

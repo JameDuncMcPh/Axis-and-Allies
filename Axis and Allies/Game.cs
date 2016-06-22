@@ -32,15 +32,15 @@ namespace Axis_and_Allies
         List<string> s = new List<string>();
 
         //europe
-        Province Germany ;
-        Province Western_Europe ;
+        Province Germany;
+        Province Western_Europe;
         Province Southern_Europe;
-        Province Balkans ;
-        Province Eatern_Europe ;
-        Province Ukraine ;
+        Province Balkans;
+        Province Eatern_Europe;
+        Province Ukraine;
         Province Belorussia;
         Province Archangel;
-        Province Karelia ;
+        Province Karelia;
         Province Caucasus;
         Province Russia;
         Province WesternRussia;
@@ -91,10 +91,13 @@ namespace Axis_and_Allies
 
         private void Game_Load(object sender, EventArgs e)
         {
+            //focus on this form
             this.Focus();
 
+            //set which natin the player is
             nation = Menu.nation;
 
+            //create trhe provinces and add them to the world
             #region Provinces
 
             List<Unit> unit;
@@ -115,14 +118,17 @@ namespace Axis_and_Allies
             Province WesternRussia = new Province("", unit = new List<Unit>(), s = new List<string>(), s = new List<string>(), "", "");
             #endregion
 
-            world = new Province[] { Germany, Western_Europe, Southern_Europe, Balkans, Eatern_Europe, Ukraine, Belorussia, Archangel, Karelia, Caucasus ,Russia ,WesternRussia };
+            world = new Province[] { Germany, Western_Europe, Southern_Europe, Balkans, Eatern_Europe, Ukraine, Belorussia, Archangel, Karelia, Caucasus, Russia, WesternRussia };
 
-            Set_up();
+            //
+            Set_up(Menu.load);
 
+            //set the variables for the beginng
             phaseLabel.Text = "Movement";
             phase = 1;
             incomeLabel.Text = "Income: " + income.ToString();
 
+            //set the unit for purchase
             purchaseBox.Items.Add("infantry");
             purchaseBox.Items.Add("artillery");
             purchaseBox.Items.Add("armour");
@@ -131,12 +137,14 @@ namespace Axis_and_Allies
 
         }
 
-        private void Set_up()
+        private void Set_up(string s)
         {
+            //set variables to null
             counter = 0;
             amount = 0;
             sting = "";
 
+            //select document to read
             XmlDocument doc = new XmlDocument();
             doc.Load("Setup.xml");
 
@@ -144,12 +152,15 @@ namespace Axis_and_Allies
             XmlNode parent;
             parent = doc.DocumentElement;
 
+            //start looking for the right node to find information
             foreach (XmlNode child in parent)
             {
-                if (child.Name == "map")
+                //whether to choose save or new game data
+                if (child.Name == s)
                 {
                     foreach (XmlNode grandchild in child)
                     {
+                        //set province name
                         world[counter].name = grandchild.Name;
 
                         foreach (XmlNode greatgrandchild in grandchild)
@@ -165,9 +176,11 @@ namespace Axis_and_Allies
 
                             if (greatgrandchild.Name == "owner")
                             {
+                                //set the owner
                                 world[counter].owner = greatgrandchild.InnerText;
                             }
 
+                            //add the units the the garrisons
                             if (greatgrandchild.Name == "infantry")
                             {
                                 for (int i = 0; i < amount; i++)
@@ -208,6 +221,7 @@ namespace Axis_and_Allies
                                     world[counter].garrison.Add(bom);
                                 }
                             }
+                            //add the land connection 
                             else if (greatgrandchild.Name == "landcon")
                             {
                                 foreach (char c in greatgrandchild.InnerText)
@@ -223,7 +237,8 @@ namespace Axis_and_Allies
                                     }
                                 }
                             }
-                            
+
+                            //whether thier is a factory or not
                             else if (greatgrandchild.Name == "IC")
                             {
                                 if (greatgrandchild.InnerText == "YES")
@@ -238,6 +253,7 @@ namespace Axis_and_Allies
                                 }
                             }
                         }
+                        //move onto the next one
                         counter++;
                     }
                 }
@@ -246,13 +262,17 @@ namespace Axis_and_Allies
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            //variables for saving
             int aInf, aArt, aArm, aFig, aBom;
             aInf = aArt = aArm = aFig = aBom = 0;
+            string landcon = "";
 
+            //create writer
             XmlTextWriter writer = new XmlTextWriter("Setup.xml", null);
 
             writer.WriteStartElement("savegame");
 
+            //record how many units are in each provine
             foreach (Province p in world)
             {
                 aInf = aArt = aArm = aFig = aBom = 0;
@@ -287,31 +307,43 @@ namespace Axis_and_Allies
                     }
                 }
 
+                //record what provinces it is adjacent to
+                foreach (string s in p.landConnection)
+                {
+                    landcon += s + ",";
+                }
+
+                //at the stated position write each piece of informationa about the province
                 writer.WriteElementString("owner", p.owner);
                 writer.WriteElementString("infantry", aInf.ToString());
                 writer.WriteElementString("artillery", aArt.ToString());
                 writer.WriteElementString("armour", aArm.ToString());
                 writer.WriteElementString("figther", aFig.ToString());
                 writer.WriteElementString("bomber", aBom.ToString());
-                writer.WriteElementString("landcon", );
-                writer.WriteElementString("IC", c.perk);
+                writer.WriteElementString("landcon", landcon);
+                writer.WriteElementString("IC", p.factory);
 
                 writer.WriteEndElement();
             }
 
+            //close off everything
             writer.WriteEndElement();
             writer.Close();
         }
 
         private void buyButton_Click(object sender, EventArgs e)
         {
+            //check if you can purchase a unit
             try
             {
+                //set it equeal to the box
                 typeLabel.Text = "Type:";
                 string type = purchaseBox.Text;
 
+                //create the new unit
                 Unit u = new Unit(type, "Germany", "Germany");
 
+                //cheack to see if thier is suffiecent income if so add it to the game
                 if (Menu.nation == "Germany" && income > u.cost)
                 {
                     world[0].garrison.Add(u);
@@ -331,6 +363,7 @@ namespace Axis_and_Allies
                     Refresh();
                 }
             }
+            //if not return a error
             catch
             {
                 typeLabel.Text = "Error";
@@ -339,24 +372,17 @@ namespace Axis_and_Allies
 
         private void Game_Paint(object sender, PaintEventArgs e)
         {
+            //draw the map
             e.Graphics.DrawImage(Properties.Resources.Map_1, 0, 0, 500, 300);
 
+            //draw the flag of the nation
             switch (nation)
             {
                 case "USSR":
-                    e.Graphics.DrawImage(Properties.Resources.soviet, 25, 350, 50, 50);
+                    e.Graphics.DrawImage(Properties.Resources.soviet, 25, 350, 100, 50);
                     break;
                 case "Germany":
-                    e.Graphics.DrawImage(Properties.Resources.Nazi, 25, 350, 50, 50);
-                    break;
-                case "UK":
-                    e.Graphics.DrawImage(Properties.Resources.UK_raf, 25, 350, 50, 50);
-                    break;
-                case "Japan":
-                    e.Graphics.DrawImage(Properties.Resources.japan_sun, 25, 350, 50, 50);
-                    break;
-                case "USA":
-                    e.Graphics.DrawImage(Properties.Resources.usa_star, 25, 350, 50, 50);
+                    e.Graphics.DrawImage(Properties.Resources.Nazi, 25, 350, 100, 50);
                     break;
                 default:
                     break;
@@ -419,7 +445,7 @@ namespace Axis_and_Allies
                             u.move = u.oMove;
                         }
                     }
-                    
+
                     break;
 
                 case 2:
@@ -428,9 +454,13 @@ namespace Axis_and_Allies
                     counter = 0;
                     phaseLabel.Text = "AI TURN";
 
+                    //run AI turn
                     #region AI turn
 
+                    //find a target to attack
                     #region Target accuriment
+
+                    //determine what nation you are playing
                     if (Menu.nation == "USSR")
                     {
                         aination = "Germany";
@@ -454,8 +484,9 @@ namespace Axis_and_Allies
                             }
                             else
                             {
-                                if(p.name == "Russia")
+                                if (p.name == "Russia")
                                 {
+                                    //ends game if conditions are met
                                     #region Result
                                     //print out result of the game
                                     resultLabel.BringToFront();
@@ -471,6 +502,7 @@ namespace Axis_and_Allies
                             switch (p.name)
                             {
                                 case "Germany":
+                                    //ends game if conditions are met
                                     #region Result
                                     //print out result of the game
                                     resultLabel.BringToFront();
@@ -562,6 +594,7 @@ namespace Axis_and_Allies
                             {
                                 if (p.name == "Germany")
                                 {
+                                    //ends game if conditions are met
                                     #region Result
                                     //print out result of the game
                                     resultLabel.BringToFront();
@@ -576,6 +609,7 @@ namespace Axis_and_Allies
                             switch (p.name)
                             {
                                 case "Russia":
+                                    //ends game if conditions are met
                                     #region Result
                                     //print out result of the game
                                     resultLabel.BringToFront();
@@ -653,14 +687,17 @@ namespace Axis_and_Allies
                     }
                     #endregion
 
+                    //attack and move units
                     #region Attack
 
+                    //check to see if one of the ai controlled provinces is adjacent to the target
                     foreach (Province p in ussrProvinces)
                     {
                         if (p.landConnection.Contains(aitarget) && p.garrison.Count() > world[counter].garrison.Count())
                         {
+                            //if so move troops and set it as an adjacent province
                             InLine.Add(p.name);
-                            intLine.Add(ussrProvinces.IndexOf(p)); 
+                            intLine.Add(ussrProvinces.IndexOf(p));
 
                             for (int i = 0; i < p.garrison.Count(); i++)
                             {
@@ -674,12 +711,14 @@ namespace Axis_and_Allies
                                 }
                             }
                         }
+                        //check to see if one of the ai controlled provinces is adjacent to the adjacent province
                         else
                         {
                             foreach (string s in InLine)
                             {
                                 if (p.landConnection.Contains(s))
                                 {
+                                    //if so move troops and set it as an adjacent province
                                     nextInLine.Add(p.name);
                                     nextintLine.Add(ussrProvinces.IndexOf(p));
                                     secondCounter = intLine[InLine.IndexOf(s)];
@@ -696,10 +735,12 @@ namespace Axis_and_Allies
                                         }
                                     }
                                 }
+                                //check to see if one of the ai controlled provinces is adjacent to the adjacent adjacent province
                                 else
                                 {
                                     foreach (string st in nextInLine)
                                     {
+                                        //if so move troops and set it as an adjacent province
                                         if (p.landConnection.Contains(st))
                                         {
                                             secondCounter = nextintLine[nextInLine.IndexOf(st)];
@@ -743,14 +784,17 @@ namespace Axis_and_Allies
                         }
                     }
 
-# endregion
+                    #endregion
 
+                    //buy more units in order for the game to continue
                     #region Purchase
+
+                    //cheack what nation is what and adds troops if thier is suffient income
                     if (Menu.nation == "USSR")
                     {
                         if (aiIncome > 3)
                         {
-                            Unit u = new Unit("infantry","USSR","Russia");
+                            Unit u = new Unit("infantry", "USSR", "Russia");
                         }
                     }
                     else
@@ -764,6 +808,8 @@ namespace Axis_and_Allies
                     #endregion
 
                     #endregion
+
+                    
                     break;
 
                 default:
@@ -773,8 +819,10 @@ namespace Axis_and_Allies
 
         private void movingButton_Click(object sender, EventArgs e)
         {
+            //see if it can be moved by game standards
             if (world[counter].garrison[garrisonBox.SelectedIndex].move > 0 && world[counter].garrison[garrisonBox.SelectedIndex].owner == Menu.nation)
             {
+                //move the unit from one list to another and lower its move counter
                 world[counter].garrison[garrisonBox.SelectedIndex].move--;
                 world[counter].garrison[garrisonBox.SelectedIndex].province = world[secondCounter].name;
 
@@ -784,6 +832,7 @@ namespace Axis_and_Allies
                 garrisonBox.Items.Clear();
                 garrisonBox2.Items.Clear();
 
+                //reprint all the units in both garrison boxes
                 foreach (Unit u in world[counter].garrison)
                 {
                     switch (u.type)
@@ -844,10 +893,13 @@ namespace Axis_and_Allies
 
         private void movingButton2_Click(object sender, EventArgs e)
         {
+            //cheack to see if you can move the unit
             try
             {
+                //if so than see if it can be moved by game standards
                 if (world[secondCounter].garrison[garrisonBox2.SelectedIndex].move > 0 && world[counter].garrison[garrisonBox.SelectedIndex].owner == Menu.nation)
                 {
+                    //move the unit from one list to another and lower its move counter
                     world[secondCounter].garrison[garrisonBox2.SelectedIndex].move--;
                     world[secondCounter].garrison[garrisonBox2.SelectedIndex].province = world[counter].name;
 
@@ -857,6 +909,7 @@ namespace Axis_and_Allies
                     garrisonBox.Items.Clear();
                     garrisonBox2.Items.Clear();
 
+                    //reprint all the units in both garrison boxes
                     foreach (Unit u in world[counter].garrison)
                     {
                         switch (u.type)
@@ -913,11 +966,12 @@ namespace Axis_and_Allies
                     }
                 }
             }
+            //if it didn't work do nothing
             catch
             {
             }
         }
-    
+
         private void dropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             secondCounter = 0;
@@ -964,15 +1018,18 @@ namespace Axis_and_Allies
 
         private void ukraineButton_Click(object sender, EventArgs e)
         {
+            //set varialbes and clear
             counter = 5;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
+            dropDown.Text = "";
 
-
+            //set the name of the province and clear the garrison box of text
             provinceLabel.Text = world[counter].name;
             garrisonBox.Text = "";
 
+            //add foreach unit its name to the garrison box
             foreach (Unit u in world[counter].garrison)
             {
                 switch (u.type)
@@ -1001,6 +1058,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //add the land connections to the drop down box
             foreach (string s in world[counter].landConnection)
             {
                 dropDown.Items.Add(s);
@@ -1009,15 +1067,18 @@ namespace Axis_and_Allies
 
         private void belorussiaButton_Click(object sender, EventArgs e)
         {
+            //set varialbes and clear
             counter = 6;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
+            dropDown.Text = "";
 
-
+            //set the name of the province and clear the garrison box of text
             provinceLabel.Text = world[counter].name;
             garrisonBox.Text = "";
 
+            //add foreach unit its name to the garrison box
             foreach (Unit u in world[counter].garrison)
             {
                 switch (u.type)
@@ -1046,6 +1107,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //add the land connections to the drop down box
             foreach (string s in world[counter].landConnection)
             {
                 dropDown.Items.Add(s);
@@ -1054,15 +1116,18 @@ namespace Axis_and_Allies
 
         private void westernrussiaButton_Click(object sender, EventArgs e)
         {
+            //set varialbes and clear
             counter = 11;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
+            dropDown.Text = "";
 
-
+            //set the name of the province and clear the garrison box of text
             provinceLabel.Text = world[counter].name;
             garrisonBox.Text = "";
 
+            //add foreach unit its name to the garrison box
             foreach (Unit u in world[counter].garrison)
             {
                 switch (u.type)
@@ -1091,6 +1156,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //add the land connections to the drop down box
             foreach (string s in world[counter].landConnection)
             {
                 dropDown.Items.Add(s);
@@ -1099,15 +1165,18 @@ namespace Axis_and_Allies
 
         private void archangelButon_Click(object sender, EventArgs e)
         {
+            //set varialbes and clear
             counter = 7;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
+            dropDown.Text = "";
 
-
+            //set the name of the province and clear the garrison box of text
             provinceLabel.Text = world[counter].name;
             garrisonBox.Text = "";
 
+            //add foreach unit its name to the garrison box
             foreach (Unit u in world[counter].garrison)
             {
                 switch (u.type)
@@ -1136,6 +1205,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //add the land connections to the drop down box
             foreach (string s in world[counter].landConnection)
             {
                 dropDown.Items.Add(s);
@@ -1144,15 +1214,18 @@ namespace Axis_and_Allies
 
         private void kareliaButton_Click(object sender, EventArgs e)
         {
+            //set varialbes and clear
             counter = 8;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
+            dropDown.Text = "";
 
-
+            //set the name of the province and clear the garrison box of text
             provinceLabel.Text = world[counter].name;
             garrisonBox.Text = "";
 
+            //add foreach unit its name to the garrison box
             foreach (Unit u in world[counter].garrison)
             {
                 switch (u.type)
@@ -1181,6 +1254,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //add the land connections to the drop down box
             foreach (string s in world[counter].landConnection)
             {
                 dropDown.Items.Add(s);
@@ -1189,15 +1263,18 @@ namespace Axis_and_Allies
 
         private void germanyButton_Click(object sender, EventArgs e)
         {
+            //set varialbes and clear
             counter = 0;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
+            dropDown.Text = "";
 
-
+            //set the name of the province and clear the garrison box of text
             provinceLabel.Text = world[counter].name;
             garrisonBox.Text = "";
 
+            //add foreach unit its name to the garrison box
             foreach (Unit u in world[counter].garrison)
             {
                 switch (u.type)
@@ -1226,6 +1303,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //add the land connections to the drop down box
             foreach (string s in world[counter].landConnection)
             {
                 dropDown.Items.Add(s);
@@ -1234,15 +1312,18 @@ namespace Axis_and_Allies
 
         private void westernEuropeButton_Click(object sender, EventArgs e)
         {
+            //set varialbes and clear
             counter = 1;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
+            dropDown.Text = "";
 
-
+            //set the name of the province and clear the garrison box of text
             provinceLabel.Text = world[counter].name;
             garrisonBox.Text = "";
 
+            //add foreach unit its name to the garrison box
             foreach (Unit u in world[counter].garrison)
             {
                 switch (u.type)
@@ -1271,6 +1352,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //add the land connections to the drop down box
             foreach (string s in world[counter].landConnection)
             {
                 dropDown.Items.Add(s);
@@ -1279,15 +1361,18 @@ namespace Axis_and_Allies
 
         private void easternEurope_Click(object sender, EventArgs e)
         {
+            //set varialbes and clear
             counter = 3;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
+            dropDown.Text = "";
 
-
+            //set the name of the province and clear the garrison box of text
             provinceLabel.Text = world[counter].name;
             garrisonBox.Text = "";
 
+            //add foreach unit its name to the garrison box
             foreach (Unit u in world[counter].garrison)
             {
                 switch (u.type)
@@ -1316,6 +1401,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //add the land connections to the drop down box
             foreach (string s in world[counter].landConnection)
             {
                 dropDown.Items.Add(s);
@@ -1324,15 +1410,18 @@ namespace Axis_and_Allies
 
         private void southernEurope_Click(object sender, EventArgs e)
         {
+            //set varialbes and clear
             counter = 2;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
+            dropDown.Text = "";
 
-
+            //set the name of the province and clear the garrison box of text
             provinceLabel.Text = world[counter].name;
             garrisonBox.Text = "";
 
+            //add foreach unit its name to the garrison box
             foreach (Unit u in world[counter].garrison)
             {
                 switch (u.type)
@@ -1361,6 +1450,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //add the land connections to the drop down box
             foreach (string s in world[counter].landConnection)
             {
                 dropDown.Items.Add(s);
@@ -1369,15 +1459,18 @@ namespace Axis_and_Allies
 
         private void Balkans_Click(object sender, EventArgs e)
         {
+            //set varialbes and clear
             counter = 4;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
+            dropDown.Text = "";
 
-
+            //set the name of the province and clear the garrison box of text
             provinceLabel.Text = world[counter].name;
             garrisonBox.Text = "";
 
+            //add foreach unit its name to the garrison box
             foreach (Unit u in world[counter].garrison)
             {
                 switch (u.type)
@@ -1406,6 +1499,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //add the land connections to the drop down box
             foreach (string s in world[counter].landConnection)
             {
                 dropDown.Items.Add(s);
@@ -1414,15 +1508,18 @@ namespace Axis_and_Allies
 
         private void russiaButton_Click(object sender, EventArgs e)
         {
+            //set varialbes and clear
             counter = 10;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
+            dropDown.Text = "";
 
-
+            //set the name of the province and clear the garrison box of text
             provinceLabel.Text = world[counter].name;
             garrisonBox.Text = "";
 
+            //add foreach unit its name to the garrison box
             foreach (Unit u in world[counter].garrison)
             {
                 switch (u.type)
@@ -1451,6 +1548,7 @@ namespace Axis_and_Allies
                 }
             }
 
+            //add the land connections to the drop down box
             foreach (string s in world[counter].landConnection)
             {
                 dropDown.Items.Add(s);
@@ -1459,15 +1557,18 @@ namespace Axis_and_Allies
 
         private void caucasusButton_Click(object sender, EventArgs e)
         {
+            //set varialbes and clear
             counter = 9;
             garrisonBox.Items.Clear();
             garrisonBox2.Items.Clear();
             dropDown.Items.Clear();
+            dropDown.Text = "";
 
-
+            //set the name of the province and clear the garrison box of text
             provinceLabel.Text = world[counter].name;
             garrisonBox.Text = "";
 
+            //add foreach unit its name to the garrison box
             foreach (Unit u in world[counter].garrison)
             {
                 switch (u.type)
@@ -1496,11 +1597,11 @@ namespace Axis_and_Allies
                 }
             }
 
+            //add the land connections to the drop down box
             foreach (string s in world[counter].landConnection)
             {
                 dropDown.Items.Add(s);
             }
         }
-
     }
 }
