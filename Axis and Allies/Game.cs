@@ -11,6 +11,9 @@ using System.Xml;
 
 namespace Axis_and_Allies
 {
+
+  
+
     public partial class Game : UserControl
     {
         /// <summary>
@@ -64,7 +67,7 @@ namespace Axis_and_Allies
             InitializeComponent();
 
             //setup the ai and human stuff
-            switch (nation)
+            switch (Menu.nation)
             {
                 case "USSR":
                     //incomes
@@ -166,7 +169,7 @@ namespace Axis_and_Allies
 
             //select document to read
             XmlDocument doc = new XmlDocument();
-            doc.Load("Setup.xml");
+            doc.Load(s);
 
             //create a node variable to represent the parent element
             XmlNode parent;
@@ -188,7 +191,7 @@ namespace Axis_and_Allies
                             }
                             else if (grandchild.Name == "country" && (grandchild.InnerText == "USSR"|| grandchild.InnerText == "Germany"))
                             {
-                                Menu.nation = Convert.ToString(grandchild.InnerText);
+                                nation = Convert.ToString(grandchild.InnerText);
                             }
                             else if (grandchild.Name == "phase")
                             {
@@ -202,7 +205,7 @@ namespace Axis_and_Allies
                 }
 
                 //whether to choose save or new game data
-                if (child.Name == s)
+                if (child.Name == "map")
                 {
                     foreach (XmlNode grandchild in child)
                     {
@@ -316,6 +319,8 @@ namespace Axis_and_Allies
             //create writer
             XmlTextWriter writer = new XmlTextWriter("Setup.xml", null);
 
+            writer.WriteStartElement("world");
+
             writer.WriteStartElement("player");
 
             //record information about the player
@@ -323,12 +328,15 @@ namespace Axis_and_Allies
             writer.WriteElementString("country", nation);
             writer.WriteElementString("phase", phase.ToString());
 
-            writer.WriteStartElement("savegame");
+            writer.WriteEndElement();
+
+            writer.WriteStartElement("map");
 
             //record how many units are in each provine
             foreach (Province p in world)
             {
                 aInf = aArt = aArm = aFig = aBom = 0;
+                landcon = "";
                 writer.WriteStartElement(p.name);
 
                 foreach (Unit u in p.garrison)
@@ -378,6 +386,9 @@ namespace Axis_and_Allies
 
                 writer.WriteEndElement();
             }
+
+            //Close savegame
+            writer.WriteEndElement();
 
             //close off everything and quit
             writer.WriteEndElement();

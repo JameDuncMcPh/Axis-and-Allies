@@ -46,7 +46,7 @@ namespace Axis_and_Allies
                 //chosing what country to play and startning game
                 if (sender.Equals(gameButton))
                 {
-                    load = "map";
+                    load = "OGState.xml";
                     button4.Visible = false;
                     nation = "USSR";
                     // f is the form that this control is on - ("this" is the current User Control)
@@ -59,7 +59,7 @@ namespace Axis_and_Allies
                 }
                 else if (sender.Equals(button2))
                 {
-                    load = "map";
+                    load = "OGState.xml";
                     nation = "Germany";
                     // f is the form that this control is on - ("this" is the current User Control)
                     Form f = this.FindForm();
@@ -89,7 +89,7 @@ namespace Axis_and_Allies
             //loading the old game
             else if (sender.Equals(LoadButton) && newGame == false)
             {
-                load = "savegame";
+                load = "Setup.xml";
                 // f is the form that this control is on - ("this" is the current User Control)
                 Form f = this.FindForm();
                 f.Controls.Remove(this);
